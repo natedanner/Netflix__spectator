@@ -119,7 +119,7 @@ public final class NetflixConfig {
 
     private static String getenv(String k, String dflt) {
       String v = System.getenv(k);
-      return (v == null) ? dflt : v;
+      return v == null ? dflt : v;
     }
 
     private static String environment() {

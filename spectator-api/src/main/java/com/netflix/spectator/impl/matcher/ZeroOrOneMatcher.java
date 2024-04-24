@@ -64,8 +64,9 @@ final class ZeroOrOneMatcher implements GreedyMatcher, Serializable {
     int pos = repeated.matches(str, start, end - start);
     if (pos >= start) {
       pos = next.matches(str, pos, end - pos);
-      if (pos >= start)
+      if (pos >= start) {
         return pos;
+      }
     }
     return next.matches(str, start, end - start);
   }
@@ -90,7 +91,7 @@ final class ZeroOrOneMatcher implements GreedyMatcher, Serializable {
     if (after instanceof TrueMatcher) {
       return this;
     }
-    Matcher m = (next instanceof TrueMatcher) ? after : SeqMatcher.create(next, after);
+    Matcher m = next instanceof TrueMatcher ? after : SeqMatcher.create(next, after);
     return new ZeroOrOneMatcher(repeated, m);
   }
 

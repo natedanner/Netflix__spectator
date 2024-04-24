@@ -289,21 +289,21 @@ public class DefaultIdTest {
   public void tagListFilter() {
     DefaultId id = new DefaultId("foo", ArrayTagSet.create("a", "1", "b", "2"));
     Id expected = Id.create("foo").withTag("a", "1");
-    Assertions.assertEquals(expected, id.filter((k, v) -> !k.equals("b")));
+    Assertions.assertEquals(expected, id.filter((k, v) -> !"b".equals(k)));
   }
 
   @Test
   public void tagListFilterByKey() {
     DefaultId id = new DefaultId("foo", ArrayTagSet.create("a", "1", "b", "2"));
     Id expected = Id.create("foo").withTag("a", "1");
-    Assertions.assertEquals(expected, id.filterByKey(k -> !k.equals("b")));
+    Assertions.assertEquals(expected, id.filterByKey(k -> !"b".equals(k)));
   }
 
   @Test
   public void tagListFilterByKeyName() {
     // Name is required and is ignored for filtering
     DefaultId id = new DefaultId("foo", ArrayTagSet.create("a", "1", "b", "2"));
-    Assertions.assertEquals(id, id.filterByKey(k -> !k.equals("name")));
+    Assertions.assertEquals(id, id.filterByKey(k -> !"name".equals(k)));
   }
 
   @Test

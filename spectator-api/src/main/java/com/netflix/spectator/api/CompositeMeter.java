@@ -50,7 +50,9 @@ class CompositeMeter<T extends Meter> implements Meter {
 
   @Override public boolean hasExpired() {
     for (Meter m : meters) {
-      if (m != null && !m.hasExpired()) return false;
+      if (m != null && !m.hasExpired()) {
+        return false;
+      }
     }
     return true;
   }

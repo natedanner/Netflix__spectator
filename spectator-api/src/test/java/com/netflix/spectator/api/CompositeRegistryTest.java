@@ -285,7 +285,7 @@ public class CompositeRegistryTest {
     r.counter("a").increment();
     r.counter("b").increment();
     Assertions.assertEquals(2, r.counters().count());
-    Assertions.assertEquals(2, r.stream().filter(m -> m instanceof Counter).count());
+    Assertions.assertEquals(2, r.stream().filter(Counter.class::isInstance).count());
   }
 
   @Test
@@ -294,7 +294,7 @@ public class CompositeRegistryTest {
     r.timer("a").record(1, TimeUnit.MICROSECONDS);
     r.timer("b").record(1, TimeUnit.MICROSECONDS);
     Assertions.assertEquals(2, r.timers().count());
-    Assertions.assertEquals(2, r.stream().filter(m -> m instanceof Timer).count());
+    Assertions.assertEquals(2, r.stream().filter(Timer.class::isInstance).count());
   }
 
   @Test
@@ -303,7 +303,7 @@ public class CompositeRegistryTest {
     r.distributionSummary("a").record(1);
     r.distributionSummary("b").record(1);
     Assertions.assertEquals(2, r.distributionSummaries().count());
-    Assertions.assertEquals(2, r.stream().filter(m -> m instanceof DistributionSummary).count());
+    Assertions.assertEquals(2, r.stream().filter(DistributionSummary.class::isInstance).count());
   }
 
   @Test
@@ -312,7 +312,7 @@ public class CompositeRegistryTest {
     r.gauge(r.createId("a")).set(1.0);
     r.gauge(r.createId("b")).set(2.0);
     Assertions.assertEquals(2, r.gauges().count());
-    Assertions.assertEquals(2, r.stream().filter(m -> m instanceof Gauge).count());
+    Assertions.assertEquals(2, r.stream().filter(Gauge.class::isInstance).count());
   }
 
   @Test

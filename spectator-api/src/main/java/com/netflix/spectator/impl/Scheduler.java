@@ -117,8 +117,8 @@ public class Scheduler {
 
   private final Lock lock = new ReentrantLock();
 
-  private volatile boolean started = false;
-  private volatile boolean shutdown = false;
+  private volatile boolean started;
+  private volatile boolean shutdown;
 
   /**
    * Create a new instance.
@@ -230,9 +230,9 @@ public class Scheduler {
   /** Options to control how a task will get executed. */
   public static class Options {
     private Policy schedulingPolicy = Policy.RUN_ONCE;
-    private long initialDelay = 0L;
-    private long frequencyMillis = 0L;
-    private boolean stopOnFailure = false;
+    private long initialDelay;
+    private long frequencyMillis;
+    private boolean stopOnFailure;
 
     /**
      * How long to wait after a task has been scheduled to the first execution. If
@@ -345,8 +345,8 @@ public class Scheduler {
     private final long initialExecutionTime;
     private long nextExecutionTime;
 
-    private volatile Thread thread = null;
-    private volatile boolean cancelled = false;
+    private volatile Thread thread;
+    private volatile boolean cancelled;
 
     /**
      * Create a new instance.

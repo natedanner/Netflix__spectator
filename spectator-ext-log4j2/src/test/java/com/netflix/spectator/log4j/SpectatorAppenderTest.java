@@ -37,7 +37,7 @@ public class SpectatorAppenderTest {
 
   private LogEvent newEvent(Level level, Throwable t, boolean includeSource) {
     final String cname = SpectatorAppenderTest.class.getName();
-    final StackTraceElement e = (t == null || !includeSource) ? null : t.getStackTrace()[0];
+    final StackTraceElement e = t == null || !includeSource ? null : t.getStackTrace()[0];
     return new Log4jLogEvent.Builder()
         .setLoggerName(cname)
         .setLoggerFqcn(cname)

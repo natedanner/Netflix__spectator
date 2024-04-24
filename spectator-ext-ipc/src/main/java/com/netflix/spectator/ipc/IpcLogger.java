@@ -90,7 +90,7 @@ public class IpcLogger {
 
   private IpcLogEntry newEntry() {
     IpcLogEntry entry = entries.poll();
-    return (entry == null) ? new IpcLogEntry(clock) : entry;
+    return entry == null ? new IpcLogEntry(clock) : entry;
   }
 
   /**

@@ -99,7 +99,7 @@ public final class BucketFunctions {
 
   private static ValueFormatter bin(long max, int pow, int width, String suffix) {
     final int shift = pow * 10;
-    final long maxBytes = (shift == 0) ? max : max << shift;
+    final long maxBytes = shift == 0 ? max : max << shift;
     return new ValueFormatter(maxBytes, width, suffix, v -> v >> shift);
   }
 

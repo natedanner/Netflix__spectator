@@ -191,9 +191,8 @@ public class SidecarRegistryTest {
   @Test
   public void timerRecordRunnable() {
     Timer t = registry.timer("test");
-    t.recordRunnable(() -> {
-      clock.setMonotonicTime(100_000_000);
-    });
+    t.recordRunnable(() ->
+      clock.setMonotonicTime(100_000_000));
     assertSingleMessage("t:test:0.1");
   }
 

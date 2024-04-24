@@ -60,7 +60,7 @@ public final class SpectatorAppender extends AppenderSkeleton {
     ThrowableInformation info = event.getThrowableInformation();
     if (info != null) {
       LocationInfo loc = event.getLocationInformation();
-      final String file = (loc == null) ? "unknown" : loc.getFileName();
+      final String file = loc == null ? "unknown" : loc.getFileName();
       Id stackTraceId = numStackTraces[level.ordinal()]
           .withTag("exception", info.getThrowable().getClass().getSimpleName())
           .withTag("file", file);

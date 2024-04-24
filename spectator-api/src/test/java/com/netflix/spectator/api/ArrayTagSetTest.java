@@ -417,7 +417,7 @@ public class ArrayTagSetTest {
   public void tagListFilter() {
     ArrayTagSet filtered = ArrayTagSet
         .create("a", "1", "b", "2", "c", "3")
-        .filter((k, v) -> !v.equals("2"));
+        .filter((k, v) -> !"2".equals(v));
     Assertions.assertEquals(ArrayTagSet.create("a", "1", "c", "3"), filtered);
   }
 
@@ -441,7 +441,7 @@ public class ArrayTagSetTest {
   public void tagListFilterByKey() {
     ArrayTagSet filtered = ArrayTagSet
         .create("a", "1", "b", "2", "c", "3")
-        .filterByKey(k -> !k.equals("b"));
+        .filterByKey(k -> !"b".equals(k));
     Assertions.assertEquals(ArrayTagSet.create("a", "1", "c", "3"), filtered);
   }
 

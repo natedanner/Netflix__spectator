@@ -105,7 +105,7 @@ public class RollupsTest {
   @Test
   public void aggregateGaugesWithNaN() {
     for (int i = 0; i < 10; ++i) {
-      double v = (i % 2 == 0) ? i : Double.NaN;
+      double v = i % 2 == 0 ? i : Double.NaN;
       registry.gauge("test", "i", "" + i).set(v);
     }
     clock.setWallTime(5000);

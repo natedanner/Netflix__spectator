@@ -97,7 +97,9 @@ final class SeqMatcher implements Matcher, Serializable {
     String str = null;
     for (Matcher m : matchers) {
       str = m.containedString();
-      if (str != null) break;
+      if (str != null) {
+        break;
+      }
     }
     return str;
   }

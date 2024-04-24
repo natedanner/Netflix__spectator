@@ -134,17 +134,20 @@ public final class HostSanitizer {
       pos = host.lastIndexOf('.', last - 1);
 
       if (!segment.isEmpty()) {
-        if (shouldSuppressSegment(segment, allowed))
+        if (shouldSuppressSegment(segment, allowed)) {
           segment = "_";
-        if (!builder.prepend(segment))
+        }
+        if (!builder.prepend(segment)) {
           break;
+        }
       }
     }
     if (pos == -1) {
       String segment = host.substring(0, last);
       if (!segment.isEmpty()) {
-        if (shouldSuppressSegment(segment, allowed))
+        if (shouldSuppressSegment(segment, allowed)) {
           segment = "_";
+        }
         builder.prepend(segment);
       }
     }
@@ -168,8 +171,9 @@ public final class HostSanitizer {
       char c = segment.charAt(i);
       if (CONSONANTS.contains(c)) {
         ++sequentialConsonants;
-        if (sequentialConsonants >= maxSequentialConsonants)
+        if (sequentialConsonants >= maxSequentialConsonants) {
           return true;
+        }
       } else {
         sequentialConsonants = 0;
       }
@@ -209,8 +213,9 @@ public final class HostSanitizer {
         }
         return true;
       } else {
-        if (!lastSuppressed)
+        if (!lastSuppressed) {
           segments.offer("_");
+        }
         lastSuppressed = true;
         return false;
       }
@@ -219,10 +224,12 @@ public final class HostSanitizer {
     @Override
     public String toString() {
       StringBuilder builder = new StringBuilder(length);
-      if (!segments.isEmpty())
+      if (!segments.isEmpty()) {
         builder.append(segments.pollLast());
-      while (!segments.isEmpty())
+      }
+      while (!segments.isEmpty()) {
         builder.append('.').append(segments.pollLast());
+      }
       return builder.toString();
     }
   }

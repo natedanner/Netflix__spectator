@@ -38,7 +38,7 @@ public interface SidecarConfig extends RegistryConfig {
    */
   default String outputLocation() {
     String v = get("sidecar.output-location");
-    return (v == null) ? "udp://127.0.0.1:1234" : v;
+    return v == null ? "udp://127.0.0.1:1234" : v;
   }
 
   /**

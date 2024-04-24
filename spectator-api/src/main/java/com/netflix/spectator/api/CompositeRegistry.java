@@ -75,8 +75,9 @@ public final class CompositeRegistry implements Registry {
 
   private int indexOf(Registry[] rs, Registry registry) {
     for (int i = 0; i < rs.length; ++i) {
-      if (rs[i].equals(registry))
+      if (rs[i].equals(registry)) {
         return i;
+      }
     }
     return -1;
   }
@@ -107,10 +108,12 @@ public final class CompositeRegistry implements Registry {
       int pos = indexOf(rs, registry);
       if (pos >= 0) {
         Registry[] tmp = new Registry[rs.length - 1];
-        if (pos > 0)
+        if (pos > 0) {
           System.arraycopy(rs, 0, tmp, 0, pos);
-        if (pos < tmp.length)
+        }
+        if (pos < tmp.length) {
           System.arraycopy(rs, pos + 1, tmp, pos, rs.length - pos - 1);
+        }
         registries.set(tmp);
         version.incrementAndGet();
       }

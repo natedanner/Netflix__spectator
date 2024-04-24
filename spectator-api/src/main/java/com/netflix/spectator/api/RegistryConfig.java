@@ -50,12 +50,12 @@ public interface RegistryConfig {
    */
   default int maxNumberOfMeters() {
     String v = get("maxNumberOfMeters");
-    return (v == null) ? Integer.MAX_VALUE : Integer.parseInt(v);
+    return v == null ? Integer.MAX_VALUE : Integer.parseInt(v);
   }
 
   /** How often registered gauges should get polled. */
   default Duration gaugePollingFrequency() {
     String v = get("gaugePollingFrequency");
-    return (v == null) ? Duration.ofSeconds(10) : Duration.parse(v);
+    return v == null ? Duration.ofSeconds(10) : Duration.parse(v);
   }
 }

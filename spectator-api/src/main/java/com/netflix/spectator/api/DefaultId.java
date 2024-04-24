@@ -125,8 +125,12 @@ final class DefaultId implements Id {
   }
 
   @Override public boolean equals(Object obj) {
-    if (this == obj) return true;
-    if (obj == null || !(obj instanceof DefaultId)) return false;
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null || !(obj instanceof DefaultId)) {
+      return false;
+    }
     DefaultId other = (DefaultId) obj;
     return name.equals(other.name) && tags.equals(other.tags);
   }

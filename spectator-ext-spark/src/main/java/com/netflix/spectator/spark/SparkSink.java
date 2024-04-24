@@ -103,12 +103,12 @@ public class SparkSink implements Sink {
 
   private long getPeriod(Properties properties) {
     final String v = properties.getProperty("period");
-    return (v == null) ? 10L : Long.parseLong(v);
+    return v == null ? 10L : Long.parseLong(v);
   }
 
   private TimeUnit getUnit(Properties properties) {
     final String v = properties.getProperty("unit");
-    return (v == null) ? TimeUnit.SECONDS : TimeUnit.valueOf(v.toUpperCase(Locale.US));
+    return v == null ? TimeUnit.SECONDS : TimeUnit.valueOf(v.toUpperCase(Locale.US));
   }
 
   private boolean shouldAddToGlobal(Properties properties) {

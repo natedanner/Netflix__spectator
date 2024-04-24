@@ -49,8 +49,12 @@ public final class PublishPayload {
   }
 
   @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
     PublishPayload that = (PublishPayload) o;
     return tags.equals(that.tags)
         && metrics.equals(that.metrics);

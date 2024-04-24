@@ -23,7 +23,7 @@ enum StartMatcher implements Matcher {
 
   @Override
   public int matches(String str, int start, int length) {
-    return (start == 0) ? 0 : Constants.NO_MATCH;
+    return start == 0 ? 0 : Constants.NO_MATCH;
   }
 
   @Override

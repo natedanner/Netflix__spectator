@@ -50,8 +50,12 @@ public final class Measurement {
 
   @Override
   public boolean equals(Object obj) {
-    if (this == obj) return true;
-    if (obj == null || !(obj instanceof Measurement)) return false;
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null || !(obj instanceof Measurement)) {
+      return false;
+    }
     Measurement other = (Measurement) obj;
     return id.equals(other.id)
       && timestamp == other.timestamp

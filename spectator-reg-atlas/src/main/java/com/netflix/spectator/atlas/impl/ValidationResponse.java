@@ -52,7 +52,7 @@ final class ValidationResponse {
   }
 
   String errorSummary() {
-    return (message == null || message.isEmpty())
+    return message == null || message.isEmpty()
         ? "unknown cause"
         : String.join("; ", message);
   }

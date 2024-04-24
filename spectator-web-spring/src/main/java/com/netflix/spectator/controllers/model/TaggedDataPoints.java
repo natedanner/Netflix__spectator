@@ -56,8 +56,12 @@ public class TaggedDataPoints {
     }
 
     @Override public boolean equals(Object obj) {
-      if (obj == this) return true;
-      if (!(obj instanceof Tag)) return false;
+      if (obj == this) {
+        return true;
+      }
+      if (!(obj instanceof Tag)) {
+        return false;
+      }
 
       Tag tag = (Tag) obj;
       return key.equals(tag.key()) && value.equals(tag.value());
@@ -113,7 +117,9 @@ public class TaggedDataPoints {
 
   @Override
   public boolean equals(Object obj) {
-    if (!(obj instanceof TaggedDataPoints)) return false;
+    if (!(obj instanceof TaggedDataPoints)) {
+      return false;
+    }
     TaggedDataPoints other = (TaggedDataPoints) obj;
     return tags.equals(other.tags) && dataPoints.equals(other.dataPoints);
   }

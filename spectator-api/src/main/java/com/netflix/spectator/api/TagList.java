@@ -104,13 +104,15 @@ public interface TagList extends Iterable<Tag>, Comparable<TagList> {
       for (int i = 0; i < n; ++i) {
         // Check key
         int cmp = getKey(i).compareTo(other.getKey(i));
-        if (cmp != 0)
+        if (cmp != 0) {
           return cmp;
+        }
 
         // Check value
         cmp = getValue(i).compareTo(other.getValue(i));
-        if (cmp != 0)
+        if (cmp != 0) {
           return cmp;
+        }
       }
 
       // If they are equal up to this point, then remaining items in one list should

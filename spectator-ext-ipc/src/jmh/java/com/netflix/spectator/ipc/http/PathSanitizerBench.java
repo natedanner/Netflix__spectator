@@ -83,10 +83,11 @@ public class PathSanitizerBench {
         }
 
         if (!segment.isEmpty()) {
-          if (shouldSuppressSegment.test(segment))
+          if (shouldSuppressSegment.test(segment)) {
             builder.append("_-");
-          else
+          } else {
             builder.append('_').append(segment);
+          }
           ++segmentsAdded;
         }
       }

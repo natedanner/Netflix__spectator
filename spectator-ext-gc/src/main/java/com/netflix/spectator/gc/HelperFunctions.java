@@ -55,7 +55,7 @@ final class HelperFunctions {
   /** Determine the type, old or young, based on the name of the collector. */
   static GcType getGcType(String name) {
     GcType t = KNOWN_COLLECTOR_NAMES.get(name);
-    return (t == null) ? GcType.UNKNOWN : t;
+    return t == null ? GcType.UNKNOWN : t;
   }
 
   /** Return true if it is an old GC type. */

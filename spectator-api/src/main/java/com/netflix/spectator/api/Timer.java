@@ -460,7 +460,7 @@ public interface Timer extends Meter {
    *     Wrapper that invokes `f` and records the time taken.
    */
   default <T> Consumer<T> wrapConsumer(Consumer<T> f) {
-    return (t) -> {
+    return t -> {
       final Clock clock = clock();
       long s = clock.monotonicTime();
       try {
@@ -502,7 +502,7 @@ public interface Timer extends Meter {
    *     Wrapper that invokes `f` and records the time taken.
    */
   default DoubleConsumer wrapDoubleConsumer(DoubleConsumer f) {
-    return (t) -> {
+    return t -> {
       final Clock clock = clock();
       long s = clock.monotonicTime();
       try {
@@ -523,7 +523,7 @@ public interface Timer extends Meter {
    *     Wrapper that invokes `f` and records the time taken.
    */
   default <R> java.util.function.DoubleFunction<R> wrapDoubleFunction(java.util.function.DoubleFunction<R> f) {
-    return (t) -> {
+    return t -> {
       final Clock clock = clock();
       long s = clock.monotonicTime();
       try {
@@ -544,7 +544,7 @@ public interface Timer extends Meter {
    *     Wrapper that invokes `f` and records the time taken.
    */
   default DoublePredicate wrapDoublePredicate(DoublePredicate f) {
-    return (t) -> {
+    return t -> {
       final Clock clock = clock();
       long s = clock.monotonicTime();
       try {
@@ -586,7 +586,7 @@ public interface Timer extends Meter {
    *     Wrapper that invokes `f` and records the time taken.
    */
   default DoubleToIntFunction wrapDoubleToIntFunction(DoubleToIntFunction f) {
-    return (t) -> {
+    return t -> {
       final Clock clock = clock();
       long s = clock.monotonicTime();
       try {
@@ -607,7 +607,7 @@ public interface Timer extends Meter {
    *     Wrapper that invokes `f` and records the time taken.
    */
   default DoubleToLongFunction wrapDoubleToLongFunction(DoubleToLongFunction f) {
-    return (t) -> {
+    return t -> {
       final Clock clock = clock();
       long s = clock.monotonicTime();
       try {
@@ -628,7 +628,7 @@ public interface Timer extends Meter {
    *     Wrapper that invokes `f` and records the time taken.
    */
   default DoubleUnaryOperator wrapDoubleUnaryOperator(DoubleUnaryOperator f) {
-    return (t) -> {
+    return t -> {
       final Clock clock = clock();
       long s = clock.monotonicTime();
       try {
@@ -649,7 +649,7 @@ public interface Timer extends Meter {
    *     Wrapper that invokes `f` and records the time taken.
    */
   default <T, R> Function<T, R> wrapFunction(Function<T, R> f) {
-    return (t) -> {
+    return t -> {
       final Clock clock = clock();
       long s = clock.monotonicTime();
       try {
@@ -691,7 +691,7 @@ public interface Timer extends Meter {
    *     Wrapper that invokes `f` and records the time taken.
    */
   default IntConsumer wrapIntConsumer(IntConsumer f) {
-    return (t) -> {
+    return t -> {
       final Clock clock = clock();
       long s = clock.monotonicTime();
       try {
@@ -712,7 +712,7 @@ public interface Timer extends Meter {
    *     Wrapper that invokes `f` and records the time taken.
    */
   default <R> IntFunction<R> wrapIntFunction(IntFunction<R> f) {
-    return (t) -> {
+    return t -> {
       final Clock clock = clock();
       long s = clock.monotonicTime();
       try {
@@ -733,7 +733,7 @@ public interface Timer extends Meter {
    *     Wrapper that invokes `f` and records the time taken.
    */
   default IntPredicate wrapIntPredicate(IntPredicate f) {
-    return (t) -> {
+    return t -> {
       final Clock clock = clock();
       long s = clock.monotonicTime();
       try {
@@ -775,7 +775,7 @@ public interface Timer extends Meter {
    *     Wrapper that invokes `f` and records the time taken.
    */
   default IntToDoubleFunction wrapIntToDoubleFunction(IntToDoubleFunction f) {
-    return (t) -> {
+    return t -> {
       final Clock clock = clock();
       long s = clock.monotonicTime();
       try {
@@ -796,7 +796,7 @@ public interface Timer extends Meter {
    *     Wrapper that invokes `f` and records the time taken.
    */
   default IntToLongFunction wrapIntToLongFunction(IntToLongFunction f) {
-    return (t) -> {
+    return t -> {
       final Clock clock = clock();
       long s = clock.monotonicTime();
       try {
@@ -817,7 +817,7 @@ public interface Timer extends Meter {
    *     Wrapper that invokes `f` and records the time taken.
    */
   default IntUnaryOperator wrapIntUnaryOperator(IntUnaryOperator f) {
-    return (t) -> {
+    return t -> {
       final Clock clock = clock();
       long s = clock.monotonicTime();
       try {
@@ -859,7 +859,7 @@ public interface Timer extends Meter {
    *     Wrapper that invokes `f` and records the time taken.
    */
   default LongConsumer wrapLongConsumer(LongConsumer f) {
-    return (t) -> {
+    return t -> {
       final Clock clock = clock();
       long s = clock.monotonicTime();
       try {
@@ -880,7 +880,7 @@ public interface Timer extends Meter {
    *     Wrapper that invokes `f` and records the time taken.
    */
   default <R> LongFunction<R> wrapLongFunction(LongFunction<R> f) {
-    return (t) -> {
+    return t -> {
       final Clock clock = clock();
       long s = clock.monotonicTime();
       try {
@@ -901,7 +901,7 @@ public interface Timer extends Meter {
    *     Wrapper that invokes `f` and records the time taken.
    */
   default LongPredicate wrapLongPredicate(LongPredicate f) {
-    return (t) -> {
+    return t -> {
       final Clock clock = clock();
       long s = clock.monotonicTime();
       try {
@@ -943,7 +943,7 @@ public interface Timer extends Meter {
    *     Wrapper that invokes `f` and records the time taken.
    */
   default LongToIntFunction wrapLongToIntFunction(LongToIntFunction f) {
-    return (t) -> {
+    return t -> {
       final Clock clock = clock();
       long s = clock.monotonicTime();
       try {
@@ -964,7 +964,7 @@ public interface Timer extends Meter {
    *     Wrapper that invokes `f` and records the time taken.
    */
   default LongToDoubleFunction wrapLongToDoubleFunction(LongToDoubleFunction f) {
-    return (t) -> {
+    return t -> {
       final Clock clock = clock();
       long s = clock.monotonicTime();
       try {
@@ -985,7 +985,7 @@ public interface Timer extends Meter {
    *     Wrapper that invokes `f` and records the time taken.
    */
   default LongUnaryOperator wrapLongUnaryOperator(LongUnaryOperator f) {
-    return (t) -> {
+    return t -> {
       final Clock clock = clock();
       long s = clock.monotonicTime();
       try {
@@ -1069,7 +1069,7 @@ public interface Timer extends Meter {
    *     Wrapper that invokes `f` and records the time taken.
    */
   default <T> Predicate<T> wrapPredicate(Predicate<T> f) {
-    return (t) -> {
+    return t -> {
       final Clock clock = clock();
       long s = clock.monotonicTime();
       try {
@@ -1132,7 +1132,7 @@ public interface Timer extends Meter {
    *     Wrapper that invokes `f` and records the time taken.
    */
   default <T> ToDoubleFunction<T> wrapToDoubleFunction(ToDoubleFunction<T> f) {
-    return (t) -> {
+    return t -> {
       final Clock clock = clock();
       long s = clock.monotonicTime();
       try {
@@ -1174,7 +1174,7 @@ public interface Timer extends Meter {
    *     Wrapper that invokes `f` and records the time taken.
    */
   default <T> ToIntFunction<T> wrapToIntFunction(ToIntFunction<T> f) {
-    return (t) -> {
+    return t -> {
       final Clock clock = clock();
       long s = clock.monotonicTime();
       try {
@@ -1216,7 +1216,7 @@ public interface Timer extends Meter {
    *     Wrapper that invokes `f` and records the time taken.
    */
   default <T> ToLongFunction<T> wrapToLongFunction(ToLongFunction<T> f) {
-    return (t) -> {
+    return t -> {
       final Clock clock = clock();
       long s = clock.monotonicTime();
       try {
@@ -1237,7 +1237,7 @@ public interface Timer extends Meter {
    *     Wrapper that invokes `f` and records the time taken.
    */
   default <T> UnaryOperator<T> wrapUnaryOperator(UnaryOperator<T> f) {
-    return (t) -> {
+    return t -> {
       final Clock clock = clock();
       long s = clock.monotonicTime();
       try {

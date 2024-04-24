@@ -59,7 +59,7 @@ public class ServerGroup {
   }
 
   private static String substr(String str, int s, int e) {
-    return (s >= e) ? null : str.substring(s, e);
+    return s >= e ? null : str.substring(s, e);
   }
 
   private final String asg;
@@ -108,13 +108,13 @@ public class ServerGroup {
       // Application portion is empty
       return null;
     } else {
-      return (dN > 0 && dN == asg.length()) ? asg() : substr(asg, 0, dN);
+      return dN > 0 && dN == asg.length() ? asg() : substr(asg, 0, dN);
     }
   }
 
   /** Return the server group name or null if invalid. */
   public String asg() {
-    return (d1 != 0 && dN > 0) ? asg : null;
+    return d1 != 0 && dN > 0 ? asg : null;
   }
 
   /** If the server group has a stack, then return the stack name. Otherwise return null. */
@@ -133,7 +133,7 @@ public class ServerGroup {
 
   /** If the server group has a detail, then return the detail name. Otherwise return null. */
   public String detail() {
-    return (d1 != 0 && d2 > 0) ? substr(asg, d2 + 1, dN) : null;
+    return d1 != 0 && d2 > 0 ? substr(asg, d2 + 1, dN) : null;
   }
 
   private boolean isDigit(char c) {
@@ -152,7 +152,7 @@ public class ServerGroup {
       int s = d2;
       while (s != -1) {
         int nextDash = asg.indexOf('-', s + 2);
-        int e = (nextDash == -1) ? dN : nextDash;
+        int e = nextDash == -1 ? dN : nextDash;
         if (e <= s + 3 || asg.charAt(s + 1) != 'x' || !nonZeroDigit(asg.charAt(s + 2))) {
           // Shard value must be at least 1 character
           // The number prefix must match
@@ -166,7 +166,7 @@ public class ServerGroup {
         }
         s = nextDash;
       }
-      return (matchStart > 0) ? substr(asg, matchStart, matchEnd) : null;
+      return matchStart > 0 ? substr(asg, matchStart, matchEnd) : null;
     } else {
       // No detail means no shards
       return null;
@@ -189,8 +189,12 @@ public class ServerGroup {
   }
 
   @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
     ServerGroup that = (ServerGroup) o;
     return d1 == that.d1
         && d2 == that.d2

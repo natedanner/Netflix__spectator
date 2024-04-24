@@ -167,7 +167,7 @@ public final class DefaultPublisher implements Publisher {
             .withContent("application/x-jackson-smile", encodeBatch(payload))
             .send();
         Instant date = res.dateHeader("Date");
-        recordClockSkew((date == null) ? 0L : date.toEpochMilli());
+        recordClockSkew(date == null ? 0L : date.toEpochMilli());
         validationHelper.recordResults(payload.getMetrics().size(), res);
       } catch (Exception e) {
         logger.warn("failed to send metrics (uri={})", uri, e);

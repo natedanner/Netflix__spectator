@@ -46,7 +46,7 @@ public interface TagFactory {
 
       @Override public Tag createTag() {
         final String v = value.get();
-        return (v == null) ? null : new BasicTag(name, v);
+        return v == null ? null : new BasicTag(name, v);
       }
     };
   }

@@ -166,7 +166,7 @@ public class AtlasRegistryTest {
     List<List<Measurement>> batches = getBatches();
     Assertions.assertEquals(3, batches.size());
     for (int i = 0; i < batches.size(); ++i) {
-      Assertions.assertEquals((i < 2) ? 3 : 1, batches.get(i).size());
+      Assertions.assertEquals(i < 2 ? 3 : 1, batches.get(i).size());
     }
   }
 
@@ -241,7 +241,7 @@ public class AtlasRegistryTest {
   public void shutdownWithoutStarting() {
     AtlasRegistry r = new AtlasRegistry(
         Clock.SYSTEM,
-        k -> k.equals("atlas.enabled") ? "true" : null);
+        k -> "atlas.enabled".equals(k) ? "true" : null);
     r.close();
   }
 
@@ -288,7 +288,7 @@ public class AtlasRegistryTest {
   private double getValue(PublishPayload payload) {
     return payload.getMetrics()
         .stream()
-        .filter(m -> m.id().name().equals("test"))
+        .filter(m -> "test".equals(m.id().name()))
         .mapToDouble(Measurement::value)
         .sum();
   }

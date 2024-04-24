@@ -69,7 +69,7 @@ public class HttpResponse {
   /** Return the value for the first occurrence of a given header or null if not found. */
   public String header(String k) {
     List<String> vs = headers.get(k);
-    return (vs == null || vs.isEmpty()) ? null : vs.get(0);
+    return vs == null || vs.isEmpty() ? null : vs.get(0);
   }
 
   /**
@@ -78,7 +78,7 @@ public class HttpResponse {
    */
   public Instant dateHeader(String k) {
     String d = header(k);
-    return (d == null) ? null : parseDate(d);
+    return d == null ? null : parseDate(d);
   }
 
   private Instant parseDate(String d) {
@@ -104,7 +104,7 @@ public class HttpResponse {
   /** Return a copy of the response with the entity decompressed. */
   public HttpResponse decompress() throws IOException {
     String enc = header("Content-Encoding");
-    return (enc != null && enc.contains("gzip")) ? unzip() : this;
+    return enc != null && enc.contains("gzip") ? unzip() : this;
   }
 
   private HttpResponse unzip() throws IOException {

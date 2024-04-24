@@ -187,7 +187,7 @@ public abstract class AbstractRegistry implements Registry {
    * then it will not create a new instance.
    */
   private Id normalizeId(Id id) {
-    return (id instanceof DefaultId)
+    return id instanceof DefaultId
         ? id
         : idNormalizationCache.computeIfAbsent(id, i -> createId(i.name(), i.tags()));
   }
@@ -201,7 +201,7 @@ public abstract class AbstractRegistry implements Registry {
   }
 
   private Meter compute(Meter m, Meter fallback) {
-    return (meters.size() >= config.maxNumberOfMeters()) ? fallback : m;
+    return meters.size() >= config.maxNumberOfMeters() ? fallback : m;
   }
 
   @Deprecated

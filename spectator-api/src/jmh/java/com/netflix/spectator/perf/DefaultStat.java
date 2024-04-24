@@ -63,7 +63,7 @@ public class DefaultStat {
             baseId.name()).withTag(Statistic.count).withTags(baseId.tags()).withTag(DsType.rate));
   }
 
-  static enum DsType implements Tag {
+  enum DsType implements Tag {
     gauge,
     rate;
 

@@ -60,8 +60,12 @@ public final class ConstantTagFactory implements TagFactory {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
     ConstantTagFactory other = (ConstantTagFactory) o;
     return tag.equals(other.tag);
   }

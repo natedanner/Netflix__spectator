@@ -71,7 +71,7 @@ public final class Agent {
   static List<File> findUpdatedConfigs(List<Object> resources, long timestamp) {
     return resources.stream()
         .filter(r -> r instanceof File && ((File) r).lastModified() > timestamp)
-        .map(r -> (File) r)
+        .map(File.class::cast)
         .collect(Collectors.toList());
   }
 

@@ -41,7 +41,7 @@ final class PositiveLookaheadMatcher implements Matcher, Serializable {
   @Override
   public int matches(String str, int start, int length) {
     int pos = matcher.matches(str, start, length);
-    return (pos >= 0) ? start : Constants.NO_MATCH;
+    return pos >= 0 ? start : Constants.NO_MATCH;
   }
 
   @Override

@@ -91,17 +91,17 @@ public final class GcLogger {
 
   private final Map<String, CircularBuffer<GcEvent>> gcLogs;
 
-  private long youngGenSizeAfter = 0L;
+  private long youngGenSizeAfter;
 
-  private String youngGenPoolName = null;
+  private String youngGenPoolName;
 
-  private String survivorPoolName = null;
+  private String survivorPoolName;
 
-  private String oldGenPoolName = null;
+  private String oldGenPoolName;
 
-  private GcNotificationListener notifListener = null;
+  private GcNotificationListener notifListener;
 
-  private GcEventListener eventListener = null;
+  private GcEventListener eventListener;
 
   /** Create a new instance. */
   public GcLogger() {

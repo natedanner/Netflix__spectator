@@ -349,7 +349,7 @@ public final class Hash64 {
     long buffer = stripe[stripePos];
     if (bitPos >= 4) {
       long lane = buffer & 0xFFFFFFFFL;
-      acc ^= (lane * PRIME64_1);
+      acc ^= lane * PRIME64_1;
       acc = Long.rotateLeft(acc, 23) * PRIME64_2;
       acc += PRIME64_3;
       buffer >>>= 32;
@@ -358,7 +358,7 @@ public final class Hash64 {
 
     while (bitPos >= 1) {
       long lane = buffer & 0xFFL;
-      acc ^= (lane * PRIME64_5);
+      acc ^= lane * PRIME64_5;
       acc = Long.rotateLeft(acc, 11) * PRIME64_1;
       buffer >>>= 8;
       bitPos -= 1;

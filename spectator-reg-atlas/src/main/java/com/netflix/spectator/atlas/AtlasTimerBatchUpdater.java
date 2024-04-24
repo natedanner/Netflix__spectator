@@ -43,7 +43,7 @@ final class AtlasTimerBatchUpdater implements Timer.BatchUpdater, Consumer<Suppl
   private AtlasTimer getTimer() {
     if (timerSupplier != null) {
       Timer t = timerSupplier.get();
-      return (t instanceof AtlasTimer) ? (AtlasTimer) t : null;
+      return t instanceof AtlasTimer ? (AtlasTimer) t : null;
     }
     return null;
   }

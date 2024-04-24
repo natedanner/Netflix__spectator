@@ -60,14 +60,16 @@ public class PrototypeMeasurementFilter implements Predicate<Measurement> {
      * Construct from the prototype specification.
      */
     public TagFilterPattern(PrototypeMeasurementFilterSpecification.TagFilterSpecification spec) {
-      if (spec == null) return;
+      if (spec == null) {
+        return;
+      }
 
       String keySpec = spec.getKey();
       String valueSpec = spec.getValue();
-      if (keySpec != null && !keySpec.isEmpty() && !keySpec.equals(".*")) {
+      if (keySpec != null && !keySpec.isEmpty() && !".*".equals(keySpec)) {
         key = Pattern.compile(keySpec);
       }
-      if (valueSpec != null && !valueSpec.isEmpty() && !valueSpec.equals(".*")) {
+      if (valueSpec != null && !valueSpec.isEmpty() && !".*".equals(valueSpec)) {
         value = Pattern.compile(valueSpec);
       }
     }
@@ -79,7 +81,9 @@ public class PrototypeMeasurementFilter implements Predicate<Measurement> {
 
     @Override
     public boolean equals(Object obj) {
-      if (!(obj instanceof TagFilterPattern)) return false;
+      if (!(obj instanceof TagFilterPattern)) {
+        return false;
+      }
       TagFilterPattern other = (TagFilterPattern) obj;
       return key.pattern().equals(other.key.pattern()) && value.pattern().equals(other.value.pattern());
     }
@@ -89,9 +93,11 @@ public class PrototypeMeasurementFilter implements Predicate<Measurement> {
      */
     @SuppressWarnings("PMD.JUnit4TestShouldUseTestAnnotation")
     public boolean test(Tag tag) {
-      if ((key != null) && !key.matcher(tag.key()).matches()) return false;
+      if ((key != null) && !key.matcher(tag.key()).matches()) {
+        return false;
+      }
 
-      return ((value == null) || value.matcher(tag.value()).matches());
+      return (value == null) || value.matcher(tag.value()).matches();
     }
 
     @Override
@@ -122,7 +128,9 @@ public class PrototypeMeasurementFilter implements Predicate<Measurement> {
      * Constructs a filter from a specification.
      */
     public ValueFilterPattern(PrototypeMeasurementFilterSpecification.ValueFilterSpecification spec) {
-      if (spec == null) return;
+      if (spec == null) {
+        return;
+      }
 
       for (PrototypeMeasurementFilterSpecification.TagFilterSpecification tag : spec.getTags()) {
           this.tags.add(new TagFilterPattern(tag));
@@ -131,7 +139,9 @@ public class PrototypeMeasurementFilter implements Predicate<Measurement> {
 
     @Override
     public boolean equals(Object obj) {
-      if (!(obj instanceof ValueFilterPattern)) return false;
+      if (!(obj instanceof ValueFilterPattern)) {
+        return false;
+      }
       ValueFilterPattern other = (ValueFilterPattern) obj;
       return tags.equals(other.tags);
     }
@@ -191,7 +201,9 @@ public class PrototypeMeasurementFilter implements Predicate<Measurement> {
             String nameRegex,
             PrototypeMeasurementFilterSpecification.MeterFilterSpecification spec) {
       namePattern = Pattern.compile(nameRegex);
-      if (spec == null) return;
+      if (spec == null) {
+        return;
+      }
 
       if (spec.getValues().isEmpty()) {
         values.add(new ValueFilterPattern(PrototypeMeasurementFilterSpecification.ValueFilterSpecification.ALL));
@@ -203,7 +215,9 @@ public class PrototypeMeasurementFilter implements Predicate<Measurement> {
 
     @Override
     public boolean equals(Object obj) {
-      if (!(obj instanceof MeterFilterPattern)) return false;
+      if (!(obj instanceof MeterFilterPattern)) {
+        return false;
+      }
       MeterFilterPattern other = (MeterFilterPattern) obj;
       return namePattern.equals(other.namePattern) && values.equals(other.values);
     }

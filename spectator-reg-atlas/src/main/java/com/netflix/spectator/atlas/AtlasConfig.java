@@ -33,7 +33,7 @@ public interface AtlasConfig extends RegistryConfig {
    */
   default Duration step() {
     String v = get("atlas.step");
-    return (v == null) ? Duration.ofMinutes(1) : Duration.parse(v);
+    return v == null ? Duration.ofMinutes(1) : Duration.parse(v);
   }
 
   /**
@@ -42,7 +42,7 @@ public interface AtlasConfig extends RegistryConfig {
    */
   default Duration meterTTL() {
     String v = get("atlas.meterTTL");
-    return (v == null) ? Duration.ofMinutes(15) : Duration.parse(v);
+    return v == null ? Duration.ofMinutes(15) : Duration.parse(v);
   }
 
   /**
@@ -70,7 +70,7 @@ public interface AtlasConfig extends RegistryConfig {
    */
   default int numThreads() {
     String v = get("atlas.numThreads");
-    return (v == null) ? 4 : Integer.parseInt(v);
+    return v == null ? 4 : Integer.parseInt(v);
   }
 
   /**
@@ -79,7 +79,7 @@ public interface AtlasConfig extends RegistryConfig {
    */
   default String uri() {
     String v = get("atlas.uri");
-    return (v == null) ? "http://localhost:7101/api/v1/publish" : v;
+    return v == null ? "http://localhost:7101/api/v1/publish" : v;
   }
 
   /**
@@ -90,7 +90,7 @@ public interface AtlasConfig extends RegistryConfig {
    */
   default Duration lwcStep() {
     String v = get("atlas.lwc.step");
-    return (v == null) ? Duration.ofSeconds(5) : Duration.parse(v);
+    return v == null ? Duration.ofSeconds(5) : Duration.parse(v);
   }
 
   /**
@@ -114,7 +114,7 @@ public interface AtlasConfig extends RegistryConfig {
   /** Returns the frequency for refreshing config settings from the LWC service. */
   default Duration configRefreshFrequency() {
     String v = get("atlas.configRefreshFrequency");
-    return (v == null) ? Duration.ofSeconds(10) : Duration.parse(v);
+    return v == null ? Duration.ofSeconds(10) : Duration.parse(v);
   }
 
   /** Returns the TTL for subscriptions from the LWC service. */
@@ -128,7 +128,7 @@ public interface AtlasConfig extends RegistryConfig {
    */
   default String configUri() {
     String v = get("atlas.config-uri");
-    return (v == null) ? "http://localhost:7101/lwc/api/v1/expressions/local-dev" : v;
+    return v == null ? "http://localhost:7101/lwc/api/v1/expressions/local-dev" : v;
   }
 
   /**
@@ -137,7 +137,7 @@ public interface AtlasConfig extends RegistryConfig {
    */
   default String evalUri() {
     String v = get("atlas.eval-uri");
-    return (v == null) ? "http://localhost:7101/lwc/api/v1/evaluate" : v;
+    return v == null ? "http://localhost:7101/lwc/api/v1/evaluate" : v;
   }
 
   /**
@@ -146,7 +146,7 @@ public interface AtlasConfig extends RegistryConfig {
    */
   default Duration connectTimeout() {
     String v = get("atlas.connectTimeout");
-    return (v == null) ? Duration.ofSeconds(1) : Duration.parse(v);
+    return v == null ? Duration.ofSeconds(1) : Duration.parse(v);
   }
 
   /**
@@ -155,7 +155,7 @@ public interface AtlasConfig extends RegistryConfig {
    */
   default Duration readTimeout() {
     String v = get("atlas.readTimeout");
-    return (v == null) ? Duration.ofSeconds(10) : Duration.parse(v);
+    return v == null ? Duration.ofSeconds(10) : Duration.parse(v);
   }
 
   /**
@@ -165,7 +165,7 @@ public interface AtlasConfig extends RegistryConfig {
    */
   default int batchSize() {
     String v = get("atlas.batchSize");
-    return (v == null) ? 10000 : Integer.parseInt(v);
+    return v == null ? 10000 : Integer.parseInt(v);
   }
 
   /**

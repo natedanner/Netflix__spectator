@@ -74,7 +74,7 @@ public class HttpLogEntry {
   }
 
   private static List<String> parseEndpoints(String s) {
-    String[] prefixes = (s == null) ? new String[] {} : s.split("[,\\s]+");
+    String[] prefixes = s == null ? new String[] {} : s.split("[,\\s]+");
     List<String> buf = new ArrayList<>();
     for (String prefix : prefixes) {
       String tmp = prefix.trim();
@@ -100,7 +100,7 @@ public class HttpLogEntry {
       }
     }
 
-    return (longest == null) ? dflt : longest;
+    return longest == null ? dflt : longest;
   }
 
   /** Log a client request. */
@@ -185,31 +185,31 @@ public class HttpLogEntry {
   // Cannot be static constant, date format is not thread-safe
   private final SimpleDateFormat isoDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 
-  private String clientName = null;
+  private String clientName;
 
   private String requestId = newId();
 
-  private String originalUri = null;
-  private String requestUri = null;
-  private String path = null;
-  private String method = null;
+  private String originalUri;
+  private String requestUri;
+  private String path;
+  private String method;
   private List<Header> requestHeaders = new ArrayList<>();
   private long requestContentLength = -1;
 
-  private String remoteAddr = null;
+  private String remoteAddr;
   private int remotePort = -1;
 
   private String attemptId = requestId;
   private int attempt = 1;
   private int maxAttempts = -1;
-  private boolean canRetry = false;
+  private boolean canRetry;
 
-  private int redirect = 0;
+  private int redirect;
 
-  private Throwable exception = null;
+  private Throwable exception;
 
   private int statusCode = -1;
-  private String statusReason = null;
+  private String statusReason;
   private List<Header> responseHeaders = new ArrayList<>();
   private long responseContentLength = -1;
 
@@ -451,13 +451,13 @@ public class HttpLogEntry {
   }
 
   private String getExceptionClass() {
-    return (exception == null)
+    return exception == null
         ? "null"
         : exception.getClass().getName();
   }
 
   private String getExceptionMessage() {
-    return (exception == null)
+    return exception == null
         ? "null"
         : exception.getMessage();
   }
@@ -481,43 +481,19 @@ public class HttpLogEntry {
   }
 
   private String getStatusTag() {
-    return (exception != null)
+    return exception != null
         ? exception.getClass().getSimpleName()
         : (statusCode >= 100 ? (statusCode / 100) + "xx" : "unknown");
   }
 
   private String getStatusCodeTag() {
-    return (exception != null)
+    return exception != null
         ? exception.getClass().getSimpleName()
         : (statusCode >= 100 ? "" + statusCode : "unknown");
   }
 
   @Override public String toString() {
-    return new StringBuilder()
-        .append(clientName).append('\t')
-        .append(getStartTime()).append('\t')
-        .append(getLatency()).append('\t')
-        .append(getOverallLatency()).append('\t')
-        .append(getTimeline()).append('\t')
-        .append(method).append('\t')
-        .append(originalUri).append('\t')
-        .append(requestUri).append('\t')
-        .append(remoteAddr).append('\t')
-        .append(remotePort).append('\t')
-        .append(statusCode).append('\t')
-        .append(statusReason).append('\t')
-        .append(getExceptionClass()).append('\t')
-        .append(getExceptionMessage()).append('\t')
-        .append(getRequestHeadersLength()).append('\t')
-        .append(requestContentLength).append('\t')
-        .append(getResponseHeadersLength()).append('\t')
-        .append(responseContentLength).append('\t')
-        .append(getRequestHeaders()).append('\t')
-        .append(getResponseHeaders()).append('\t')
-        .append(redirect).append('\t')
-        .append(attempt).append('\t')
-        .append(maxAttempts)
-        .toString();
+    return clientName + '\t' + getStartTime() + '\t' + getLatency() + '\t' + getOverallLatency() + '\t' + getTimeline() + '\t' + method + '\t' + originalUri + '\t' + requestUri + '\t' + remoteAddr + '\t' + remotePort + '\t' + statusCode + '\t' + statusReason + '\t' + getExceptionClass() + '\t' + getExceptionMessage() + '\t' + getRequestHeadersLength() + '\t' + requestContentLength + '\t' + getResponseHeadersLength() + '\t' + responseContentLength + '\t' + getRequestHeaders() + '\t' + getResponseHeaders() + '\t' + redirect + '\t' + attempt + '\t' + maxAttempts;
   }
 
   private static class Header {

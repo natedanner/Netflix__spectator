@@ -40,7 +40,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class MetricsControllerTest {
-  private Clock clock = new ManualClock(12345L, 0L);
+  private final Clock clock = new ManualClock(12345L, 0L);
 
   MetricsController controller = new MetricsController();
   Id idA = Id.create("idA");

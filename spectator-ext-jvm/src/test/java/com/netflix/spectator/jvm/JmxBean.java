@@ -32,7 +32,7 @@ import java.util.TreeMap;
 
 class JmxBean implements DynamicMBean {
 
-  private static MBeanServer MBEAN_SERVER = ManagementFactory.getPlatformMBeanServer();
+  private static final MBeanServer MBEAN_SERVER = ManagementFactory.getPlatformMBeanServer();
 
   static void register(JmxBean bean) throws Exception {
     if (MBEAN_SERVER.isRegistered(bean.id)) {
@@ -102,7 +102,7 @@ class JmxBean implements DynamicMBean {
     for (Map.Entry<String, Object> entry : attributes.entrySet()) {
       String attrName = entry.getKey();
       Object attrValue = entry.getValue();
-      String typeName = (attrValue instanceof Number)
+      String typeName = attrValue instanceof Number
           ? Number.class.getName()
           : String.class.getName();
       boolean isReadable = true;

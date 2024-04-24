@@ -59,8 +59,8 @@ public class HttpRequestBuilder {
   private long initialRetryDelay = 1000L;
   private int numAttempts = 1;
 
-  private HostnameVerifier hostVerifier = null;
-  private SSLSocketFactory sslFactory = null;
+  private HostnameVerifier hostVerifier;
+  private SSLSocketFactory sslFactory;
 
   /** Create a new instance for the specified URI. */
   public HttpRequestBuilder(String clientName, URI uri) {
@@ -287,7 +287,7 @@ public class HttpRequestBuilder {
       }
 
       int status = con.getResponseCode();
-      canRetry = (status >= 500 || status == 429);
+      canRetry = status >= 500 || status == 429;
       entry.mark("complete").withStatusCode(status);
 
       // A null key is used to return the status line, remove it before sending to
@@ -300,7 +300,7 @@ public class HttpRequestBuilder {
         }
       }
 
-      try (InputStream in = (status >= 400) ? con.getErrorStream() : con.getInputStream()) {
+      try (InputStream in = status >= 400 ? con.getErrorStream() : con.getInputStream()) {
         byte[] data = readAll(in);
         entry.withResponseContentLength(data.length);
         return new HttpResponse(status, headers, data);

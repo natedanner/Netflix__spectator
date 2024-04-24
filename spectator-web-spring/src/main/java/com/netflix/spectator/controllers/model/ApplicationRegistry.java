@@ -84,7 +84,9 @@ public class ApplicationRegistry {
 
   @Override
   public boolean equals(Object obj) {
-    if (!(obj instanceof ApplicationRegistry)) return false;
+    if (!(obj instanceof ApplicationRegistry)) {
+      return false;
+    }
     ApplicationRegistry other = (ApplicationRegistry) obj;
     return applicationName.equals(other.applicationName) && metrics.equals(other.metrics);
   }

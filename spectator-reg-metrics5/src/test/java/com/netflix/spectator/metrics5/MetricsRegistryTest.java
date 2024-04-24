@@ -49,9 +49,9 @@ public class MetricsRegistryTest {
     MetricRegistry dwRegistry = new MetricRegistry();
     MetricsRegistry r = new MetricsRegistry(clock, dwRegistry);
     r.counter("foo").increment();
-    Assertions.assertEquals(1, dwRegistry.getMeters().get(new MetricName("foo", Collections.EMPTY_MAP)).getCount());
+    Assertions.assertEquals(1, dwRegistry.getMeters().get(new MetricName("foo", Collections.emptyMap())).getCount());
     r.counter("foo").increment(15);
-    Assertions.assertEquals(16, dwRegistry.getMeters().get(new MetricName("foo", Collections.EMPTY_MAP)).getCount());
+    Assertions.assertEquals(16, dwRegistry.getMeters().get(new MetricName("foo", Collections.emptyMap())).getCount());
   }
 
   @Test
@@ -59,7 +59,7 @@ public class MetricsRegistryTest {
     MetricRegistry dwRegistry = new MetricRegistry();
     MetricsRegistry r = new MetricsRegistry(clock, dwRegistry);
     r.timer("foo").record(1, TimeUnit.MILLISECONDS);
-    Assertions.assertEquals(1, dwRegistry.getTimers().get(new MetricName("foo", Collections.EMPTY_MAP)).getCount());
+    Assertions.assertEquals(1, dwRegistry.getTimers().get(new MetricName("foo", Collections.emptyMap())).getCount());
   }
 
   @Test
@@ -67,13 +67,13 @@ public class MetricsRegistryTest {
     MetricRegistry dwRegistry = new MetricRegistry();
     MetricsRegistry r = new MetricsRegistry(clock, dwRegistry);
     r.distributionSummary("foo").record(1);
-    Assertions.assertEquals(1, dwRegistry.getHistograms().get(new MetricName("foo", Collections.EMPTY_MAP)).getCount());
+    Assertions.assertEquals(1, dwRegistry.getHistograms().get(new MetricName("foo", Collections.emptyMap())).getCount());
   }
 
   private void assertGaugeValue(
       MetricsRegistry r, MetricRegistry dwRegistry, String name, double expected) {
     PolledMeter.update(r);
-    Assertions.assertEquals(expected, (Double) dwRegistry.getGauges().get(new MetricName(name, Collections.EMPTY_MAP)).getValue(), 1e-12);
+    Assertions.assertEquals(expected, (Double) dwRegistry.getGauges().get(new MetricName(name, Collections.emptyMap())).getValue(), 1e-12);
   }
 
   @Test
@@ -123,7 +123,7 @@ public class MetricsRegistryTest {
     AtomicInteger num = r.gauge("foo", new AtomicInteger(42));
 
     // Should be registered with the Dropwizard registry
-    Assertions.assertEquals(42.0, (Double) dwRegistry.getGauges().get(new MetricName("foo", Collections.EMPTY_MAP)).getValue(), 1e-12);
+    Assertions.assertEquals(42.0, (Double) dwRegistry.getGauges().get(new MetricName("foo", Collections.emptyMap())).getValue(), 1e-12);
 
     // Should not be registered with spectator
     Assertions.assertNull(r.get(r.createId("foo")));

@@ -88,7 +88,7 @@ public class ServoRegistry extends AbstractRegistry implements CompositeMonitor<
   /** Create a new instance. */
   ServoRegistry(Clock clock, MonitorConfig config) {
     super(clock);
-    this.config = (config == null) ? defaultConfig() : config;
+    this.config = config == null ? defaultConfig() : config;
     DefaultMonitorRegistry.getInstance().register(this);
   }
 

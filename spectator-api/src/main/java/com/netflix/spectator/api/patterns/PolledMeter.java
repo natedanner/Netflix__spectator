@@ -507,7 +507,7 @@ public final class PolledMeter {
 
   /** Base class for meter state used for bookkeeping. */
   abstract static class AbstractMeterState {
-    private Future<?> future = null;
+    private Future<?> future;
 
     /** Return the id for the meter. */
     protected abstract Id id();

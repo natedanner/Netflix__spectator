@@ -49,7 +49,7 @@ public interface StatelessConfig extends RegistryConfig {
    */
   default Duration meterTTL() {
     String v = get("stateless.meterTTL");
-    return (v == null) ? Duration.ofMinutes(15) : Duration.parse(v);
+    return v == null ? Duration.ofMinutes(15) : Duration.parse(v);
   }
 
   /**
@@ -58,7 +58,7 @@ public interface StatelessConfig extends RegistryConfig {
    */
   default Duration connectTimeout() {
     String v = get("stateless.connectTimeout");
-    return (v == null) ? Duration.ofSeconds(1) : Duration.parse(v);
+    return v == null ? Duration.ofSeconds(1) : Duration.parse(v);
   }
 
   /**
@@ -67,7 +67,7 @@ public interface StatelessConfig extends RegistryConfig {
    */
   default Duration readTimeout() {
     String v = get("stateless.readTimeout");
-    return (v == null) ? Duration.ofSeconds(10) : Duration.parse(v);
+    return v == null ? Duration.ofSeconds(10) : Duration.parse(v);
   }
 
   /**
@@ -76,7 +76,7 @@ public interface StatelessConfig extends RegistryConfig {
    */
   default String uri() {
     String v = get("stateless.uri");
-    return (v == null) ? "http://localhost:7101/api/v4/update" : v;
+    return v == null ? "http://localhost:7101/api/v4/update" : v;
   }
 
   /**
@@ -86,7 +86,7 @@ public interface StatelessConfig extends RegistryConfig {
    */
   default int batchSize() {
     String v = get("stateless.batchSize");
-    return (v == null) ? 10000 : Integer.parseInt(v);
+    return v == null ? 10000 : Integer.parseInt(v);
   }
 
   /**

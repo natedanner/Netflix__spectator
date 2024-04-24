@@ -134,7 +134,7 @@ public final class SpectatorAppender extends AbstractAppender {
     final LevelTag level = LevelTag.get(event.getLevel());
     registry.counter(numMessages[level.ordinal()]).increment();
     if (!ignoreExceptions() && event.getThrown() != null) {
-      final String file = (event.getSource() == null) ? "unknown" : event.getSource().getFileName();
+      final String file = event.getSource() == null ? "unknown" : event.getSource().getFileName();
       Id stackTraceId = numStackTraces[level.ordinal()]
           .withTag("exception", event.getThrown().getClass().getSimpleName())
           .withTag("file", file == null ? "unknown" : file);

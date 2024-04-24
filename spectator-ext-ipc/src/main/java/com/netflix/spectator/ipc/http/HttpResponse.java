@@ -69,7 +69,7 @@ public final class HttpResponse {
   /** Return the value for the first occurrence of a given header or null if not found. */
   public String header(String k) {
     List<String> vs = headers.get(k);
-    return (vs == null || vs.isEmpty()) ? null : vs.get(0);
+    return vs == null || vs.isEmpty() ? null : vs.get(0);
   }
 
   /**
@@ -78,7 +78,7 @@ public final class HttpResponse {
    */
   public Instant dateHeader(String k) {
     String d = header(k);
-    return (d == null) ? null : parseDate(d);
+    return d == null ? null : parseDate(d);
   }
 
   private Instant parseDate(String d) {
@@ -111,7 +111,7 @@ public final class HttpResponse {
   public InputStream entityInputStream() throws IOException {
     ByteArrayInputStream bais = new ByteArrayInputStream(data);
     String enc = header("Content-Encoding");
-    return (enc != null && enc.contains("gzip"))
+    return enc != null && enc.contains("gzip")
         ? new GZIPInputStream(bais)
         : bais;
   }
@@ -119,7 +119,7 @@ public final class HttpResponse {
   /** Return a copy of the response with the entity compressed. Typically used for testing. */
   public HttpResponse compress() throws IOException {
     String enc = header("Content-Encoding");
-    return (enc == null) ? gzip() : this;
+    return enc == null ? gzip() : this;
   }
 
   private HttpResponse gzip() throws IOException {
@@ -131,7 +131,7 @@ public final class HttpResponse {
   /** Return a copy of the response with the entity decompressed. */
   public HttpResponse decompress() throws IOException {
     String enc = header("Content-Encoding");
-    return (enc != null && enc.contains("gzip")) ? gunzip() : this;
+    return enc != null && enc.contains("gzip") ? gunzip() : this;
   }
 
   private HttpResponse gunzip() throws IOException {

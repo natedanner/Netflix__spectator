@@ -188,7 +188,7 @@ public interface Consolidator {
     }
 
     private long roundToConsolidatedStep(long t) {
-      return (t % step == 0L) ? t : t / step * step + step;
+      return t % step == 0L ? t : t / step * step + step;
     }
 
     /** Combines two values to create an aggregate used as the consolidated value. */
@@ -225,7 +225,7 @@ public interface Consolidator {
     }
 
     @Override public double value(long t) {
-      return (timestamp - t == step) ? previous : Double.NaN;
+      return timestamp - t == step ? previous : Double.NaN;
     }
 
     @Override public boolean isEmpty() {

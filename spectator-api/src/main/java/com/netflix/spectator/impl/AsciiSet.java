@@ -163,7 +163,9 @@ public final class AsciiSet implements Serializable {
 
   private static void append(StringBuilder buf, char s, char e) {
     switch (e - s) {
-      case 0:  if (s != '-') buf.append(s);         break;
+      case 0:  if (s != '-') {
+        buf.append(s);
+      }         break;
       case 1:  buf.append(s).append(e);             break;
       default: buf.append(s).append('-').append(e); break;
     }
@@ -266,8 +268,9 @@ public final class AsciiSet implements Serializable {
     buf[start] = replacement;
     for (int i = start + 1; i < n; ++i) {
       final char c = input.charAt(i);
-      if (!contains(c))
+      if (!contains(c)) {
         buf[i] = replacement;
+      }
     }
     return newString(buf);
   }
@@ -285,7 +288,7 @@ public final class AsciiSet implements Serializable {
         ++count;
       }
     }
-    return (count == 1) ? Optional.of(c) : Optional.empty();
+    return count == 1 ? Optional.of(c) : Optional.empty();
   }
 
   /** Returns true if this set is isEmpty. */
@@ -307,8 +310,12 @@ public final class AsciiSet implements Serializable {
   }
 
   @Override public boolean equals(Object obj) {
-    if (this == obj) return true;
-    if (obj == null || !(obj instanceof AsciiSet)) return false;
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null || !(obj instanceof AsciiSet)) {
+      return false;
+    }
     AsciiSet other = (AsciiSet) obj;
     return pattern.equals(other.pattern) && Arrays.equals(members, other.members);
   }

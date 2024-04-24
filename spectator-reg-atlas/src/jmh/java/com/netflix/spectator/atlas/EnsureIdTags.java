@@ -71,7 +71,7 @@ public class EnsureIdTags {
       .withTag("ipc.status.detail", "200")
       .withTag("ipc.result", "success");
 
-  private final Id STAT_ID = BASE_ID.withTag(Statistic.count).withTag(DsType.rate);
+  private final Id statId = BASE_ID.withTag(Statistic.count).withTag(DsType.rate);
 
   @Benchmark
   public void newIdMissing(Blackhole bh) {
@@ -84,10 +84,10 @@ public class EnsureIdTags {
 
   @Benchmark
   public void newIdPresent(Blackhole bh) {
-    Id stat = Id.create(STAT_ID.name())
+    Id stat = Id.create(statId.name())
         .withTag(Statistic.count)
         .withTag(DsType.rate)
-        .withTags(STAT_ID.tags());
+        .withTags(statId.tags());
     bh.consume(stat);
   }
 
@@ -99,7 +99,7 @@ public class EnsureIdTags {
 
   @Benchmark
   public void checkPresent(Blackhole bh) {
-    Id stat = AtlasMeter.addIfMissing(STAT_ID, Statistic.count, DsType.rate);
+    Id stat = AtlasMeter.addIfMissing(statId, Statistic.count, DsType.rate);
     bh.consume(stat);
   }
 }

@@ -38,13 +38,14 @@ public class DefaultHttpClientTest {
   private static void ignore(InputStream input) throws IOException {
     try (InputStream in = input) {
       byte[] buf = new byte[1024];
-      while (in.read(buf) > 0);
+      while (in.read(buf) > 0) {
+      }
     }
   }
 
   private static int getInt(Headers headers, String k, int dflt) {
     String v = headers.getFirst(k);
-    return (v == null) ? dflt : Integer.parseInt(v);
+    return v == null ? dflt : Integer.parseInt(v);
   }
 
   @BeforeAll

@@ -36,8 +36,9 @@ public class ExpandOrPatternMatcherTest extends AbstractPatternMatcherTest {
 
   private boolean matches(List<PatternMatcher> matchers, String value) {
     for (PatternMatcher m : matchers) {
-      if (m.matches(value))
+      if (m.matches(value)) {
         return true;
+      }
     }
     return false;
   }

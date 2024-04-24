@@ -114,7 +114,7 @@ class AtlasDistributionSummary extends AtlasMeter implements DistributionSummary
     for (int i = 0; i < limit; i++) {
       if (amounts[i] > 0) {
         accumulatedTotal += amounts[i];
-        accumulatedTotalOfSquares += ((double) amounts[i] * amounts[i]);
+        accumulatedTotalOfSquares += (double) amounts[i] * amounts[i];
         accumulatedMax = Math.max(amounts[i], accumulatedMax);
       }
     }

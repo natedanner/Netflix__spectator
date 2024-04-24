@@ -170,9 +170,9 @@ public class SparkNameFunctionTest {
  @Test
   public void JustPatternMatching() {
 
-    final String pattern_string = "^([^.]+)\\.(driver)\\.((CodeGenerator|DAGScheduler|BlockManager|jvm)\\..*)$";
+    final String patternString = "^([^.]+)\\.(driver)\\.((CodeGenerator|DAGScheduler|BlockManager|jvm)\\..*)$";
     final String metric = "97278898-4bd4-49c2-9889-aa5f969a7816-0023.driver.jvm.pools.PS-Old-Gen.used";
-    final Pattern pattern = Pattern.compile(pattern_string);
+    final Pattern pattern = Pattern.compile(patternString);
     final Matcher m = pattern.matcher(metric);
 
    Assertions.assertTrue(m.matches());

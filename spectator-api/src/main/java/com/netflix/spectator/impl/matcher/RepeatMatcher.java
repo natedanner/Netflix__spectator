@@ -70,7 +70,7 @@ final class RepeatMatcher implements Matcher, Serializable {
         ++numMatches;
         pos = p;
       } else {
-        return (numMatches >= min) ? pos : Constants.NO_MATCH;
+        return numMatches >= min ? pos : Constants.NO_MATCH;
       }
     }
     return pos;

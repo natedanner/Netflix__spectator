@@ -103,7 +103,7 @@ public class IpcServletFilter implements Filter {
 
   private String getEndpoint(HttpServletRequest httpReq) {
     String servletPath = ServletPathHack.getServletPath(httpReq);
-    return (servletPath == null || servletPath.isEmpty())
+    return servletPath == null || servletPath.isEmpty()
         ? "/"
         : servletPath;
   }

@@ -805,7 +805,7 @@ public interface Registry extends Iterable<Meter> {
    * </pre>
    */
   default Stream<Counter> counters() {
-    return stream().filter(m -> m instanceof Counter).map(m -> (Counter) m);
+    return stream().filter(Counter.class::isInstance).map(Counter.class::cast);
   }
 
   /**
@@ -826,7 +826,7 @@ public interface Registry extends Iterable<Meter> {
    * </pre>
    */
   default Stream<DistributionSummary> distributionSummaries() {
-    return stream().filter(m -> m instanceof DistributionSummary).map(m -> (DistributionSummary) m);
+    return stream().filter(DistributionSummary.class::isInstance).map(DistributionSummary.class::cast);
   }
 
   /**
@@ -847,7 +847,7 @@ public interface Registry extends Iterable<Meter> {
    * </pre>
    */
   default Stream<Timer> timers() {
-    return stream().filter(m -> m instanceof Timer).map(m -> (Timer) m);
+    return stream().filter(Timer.class::isInstance).map(Timer.class::cast);
   }
 
   /**
@@ -864,7 +864,7 @@ public interface Registry extends Iterable<Meter> {
    * </pre>
    */
   default Stream<Gauge> gauges() {
-    return stream().filter(m -> m instanceof Gauge).map(m -> (Gauge) m);
+    return stream().filter(Gauge.class::isInstance).map(Gauge.class::cast);
   }
 
   /**

@@ -68,7 +68,9 @@ public class MetricValues {
 
   @Override
   public boolean equals(Object obj) {
-    if (!(obj instanceof MetricValues)) return false;
+    if (!(obj instanceof MetricValues)) {
+      return false;
+    }
     MetricValues other = (MetricValues) obj;
 
     // Ignore the kind because spectator internally transforms it

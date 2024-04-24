@@ -810,8 +810,7 @@ public class IpcLogEntryTest {
         .markEnd()
         .log();
 
-    registry.counters().forEach(c -> {
-      Assertions.assertEquals("unknown", Utils.getTagValue(c.id(), "ipc.endpoint"));
-    });
+    registry.counters().forEach(c ->
+      Assertions.assertEquals("unknown", Utils.getTagValue(c.id(), "ipc.endpoint")));
   }
 }

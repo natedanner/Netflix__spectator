@@ -134,8 +134,12 @@ public interface RollupPolicy extends Function<List<Measurement>, List<RollupPol
 
     @Override
     public boolean equals(Object o) {
-      if (this == o) return true;
-      if (!(o instanceof Rule)) return false;
+      if (this == o) {
+        return true;
+      }
+      if (!(o instanceof Rule)) {
+        return false;
+      }
       Rule rule = (Rule) o;
       return query.equals(rule.query)
           && rollup.equals(rule.rollup)
@@ -183,8 +187,12 @@ public interface RollupPolicy extends Function<List<Measurement>, List<RollupPol
 
     @Override
     public boolean equals(Object o) {
-      if (this == o) return true;
-      if (!(o instanceof Result)) return false;
+      if (this == o) {
+        return true;
+      }
+      if (!(o instanceof Result)) {
+        return false;
+      }
       Result result = (Result) o;
       return commonTags.equals(result.commonTags)
           && measurements.equals(result.measurements);

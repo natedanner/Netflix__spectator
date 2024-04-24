@@ -28,8 +28,8 @@ import java.util.concurrent.TimeUnit;
 
 public class StatelessRegistryTest {
 
-  private ManualClock clock = new ManualClock();
-  private StatelessRegistry registry = new StatelessRegistry(clock, newConfig());
+  private final ManualClock clock = new ManualClock();
+  private final StatelessRegistry registry = new StatelessRegistry(clock, newConfig());
 
   private StatelessConfig newConfig() {
     ConcurrentHashMap<String, String> props = new ConcurrentHashMap<>();
@@ -103,7 +103,7 @@ public class StatelessRegistryTest {
     List<List<Measurement>> batches = registry.getBatches();
     Assertions.assertEquals(3, batches.size());
     for (int i = 0; i < batches.size(); ++i) {
-      Assertions.assertEquals((i < 2) ? 3 : 1, batches.get(i).size());
+      Assertions.assertEquals(i < 2 ? 3 : 1, batches.get(i).size());
     }
   }
 

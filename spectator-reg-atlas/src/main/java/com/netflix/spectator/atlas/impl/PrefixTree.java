@@ -322,12 +322,13 @@ final class PrefixTree {
     while (s <= e) {
       int mid = (s + e) >>> 1;
       int cmp = Character.compare(nodes[mid].prefix.charAt(0), key.charAt(offset));
-      if (cmp == 0)
+      if (cmp == 0) {
         return mid;
-      else if (cmp < 0)
+      } else if (cmp < 0) {
         s = mid + 1;
-      else
+      } else {
         e = mid - 1;
+      }
     }
     return -1;
   }
@@ -348,8 +349,12 @@ final class PrefixTree {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
     PrefixTree that = (PrefixTree) o;
     return Objects.equals(root, that.root)
         && otherQueries.equals(that.otherQueries);
@@ -451,8 +456,12 @@ final class PrefixTree {
 
     @Override
     public boolean equals(Object o) {
-      if (this == o) return true;
-      if (o == null || getClass() != o.getClass()) return false;
+      if (this == o) {
+        return true;
+      }
+      if (o == null || getClass() != o.getClass()) {
+        return false;
+      }
       Node node = (Node) o;
       return prefix.equals(node.prefix)
           && Arrays.equals(children, node.children)

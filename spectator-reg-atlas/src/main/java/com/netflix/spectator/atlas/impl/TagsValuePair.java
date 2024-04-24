@@ -50,8 +50,12 @@ public final class TagsValuePair {
   }
 
   @Override public boolean equals(Object obj) {
-    if (this == obj) return true;
-    if (!(obj instanceof TagsValuePair)) return false;
+    if (this == obj) {
+      return true;
+    }
+    if (!(obj instanceof TagsValuePair)) {
+      return false;
+    }
     TagsValuePair other = (TagsValuePair) obj;
     return tags.equals(other.tags) && Double.compare(value, other.value) == 0;
   }

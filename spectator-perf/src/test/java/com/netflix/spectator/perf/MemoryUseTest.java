@@ -23,7 +23,7 @@ import org.openjdk.jol.info.GraphLayout;
 
 public abstract class MemoryUseTest {
 
-  private String registryType;
+  private final String registryType;
 
   public MemoryUseTest(String registryType) {
     this.registryType = registryType;

@@ -122,7 +122,7 @@ class AtlasTimer extends AtlasMeter implements Timer {
       final long nanos = unit.toNanos(amounts[i]);
       if (nanos > 0) {
         accumulatedTotal += nanos;
-        accumulatedTotalOfSquares += ((double) nanos * nanos);
+        accumulatedTotalOfSquares += (double) nanos * nanos;
         accumulatedMax = Math.max(nanos, accumulatedMax);
       }
     }
@@ -148,7 +148,7 @@ class AtlasTimer extends AtlasMeter implements Timer {
       final long nanos = amounts[i].toNanos();
       if (nanos > 0) {
         accumulatedTotal += nanos;
-        accumulatedTotalOfSquares += ((double) nanos * nanos);
+        accumulatedTotalOfSquares += (double) nanos * nanos;
         accumulatedMax = Math.max(nanos, accumulatedMax);
       }
     }

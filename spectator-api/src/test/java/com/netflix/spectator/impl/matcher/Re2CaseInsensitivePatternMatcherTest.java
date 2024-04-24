@@ -52,10 +52,11 @@ public class Re2CaseInsensitivePatternMatcherTest extends AbstractPatternMatcher
       } else {
         // Validate that all remaining patterns can be processed with RE2
         expr.toQueryString(new Re2Encoder());
-        if (expr instanceof PatternExpr.Regex)
+        if (expr instanceof PatternExpr.Regex) {
           re2 = compileRE2(((PatternExpr.Regex) expr).matcher().toString());
-        else
+        } else {
           re2 = null;
+        }
         /*try {
           re2 = compileRE2(encoded);
         } catch (Exception e) {
@@ -67,12 +68,14 @@ public class Re2CaseInsensitivePatternMatcherTest extends AbstractPatternMatcher
       Pattern pattern = Pattern.compile("^.*(" + regex + ")", Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
       if (pattern.matcher(value).find()) {
         Assertions.assertTrue(expr.matches(value), regex + " should match " + value);
-        if (re2 != null)
+        if (re2 != null) {
           Assertions.assertTrue(re2.matcher(value).find(), re2 + " should match " + value);
+        }
       } else {
         Assertions.assertFalse(expr.matches(value), regex + " shouldn't match " + value);
-        if (re2 != null)
+        if (re2 != null) {
           Assertions.assertFalse(re2.matcher(value).find(), re2 + " shouldn't match " + value);
+        }
       }
     }
   }

@@ -106,7 +106,7 @@ public class BucketFunctionsTest {
       final long max = fmt.max();
       LongFunction<String> f = BucketFunctions.latency(max, TimeUnit.NANOSECONDS);
       Set<String> keys = new HashSet<>();
-      final long step = (max > 37) ? max / 37 : 1;
+      final long step = max > 37 ? max / 37 : 1;
       for (long j = 0L; max - j > step; j += step) {
         keys.add(f.apply(j));
       }
@@ -121,7 +121,7 @@ public class BucketFunctionsTest {
       final long max = fmt.max();
       LongFunction<String> f = BucketFunctions.latencyBiasSlow(max, TimeUnit.NANOSECONDS);
       Set<String> keys = new HashSet<>();
-      final long step = (max > 37) ? max / 37 : 1;
+      final long step = max > 37 ? max / 37 : 1;
       for (long j = 0L; max - j >= step; j += step) {
         keys.add(f.apply(j));
       }

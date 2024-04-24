@@ -60,8 +60,9 @@ interface Matcher extends PatternMatcher {
   @Override
   default List<PatternMatcher> expandOrClauses(int max) {
     List<Matcher> ms = PatternUtils.expandOrClauses(this, max);
-    if (ms == null)
+    if (ms == null) {
       return null;
+    }
     List<PatternMatcher> results = new ArrayList<>(ms.size());
     for (Matcher m : ms) {
       results.add(Optimizer.optimize(m));

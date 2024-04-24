@@ -57,7 +57,7 @@ public class StepDouble implements StepValue {
       // Need to check if there was any activity during the previous step interval. If there was
       // then the init position will move forward by 1, otherwise it will be older. No activity
       // means the previous interval should be set to the `init` value.
-      previous = (lastInit == stepTime - 1) ? v : init;
+      previous = lastInit == stepTime - 1 ? v : init;
     }
   }
 

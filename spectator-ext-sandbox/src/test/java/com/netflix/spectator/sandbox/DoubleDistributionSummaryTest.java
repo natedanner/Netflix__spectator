@@ -29,7 +29,7 @@ public class DoubleDistributionSummaryTest {
 
   private final ManualClock clock = new ManualClock();
 
-  private Registry registry = new DefaultRegistry();
+  private final Registry registry = new DefaultRegistry();
 
   private DoubleDistributionSummary newInstance() {
     clock.setWallTime(0L);

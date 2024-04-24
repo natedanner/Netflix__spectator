@@ -65,7 +65,7 @@ final class HttpUtils {
    */
   static String clientNameForURI(URI uri) {
     String host = uri.getHost();
-    return (host == null) ? DEFAULT : clientNameForHost(host);
+    return host == null ? DEFAULT : clientNameForHost(host);
   }
 
   /** Wrap GZIPOutputStream allowing the user to override the compression level. */

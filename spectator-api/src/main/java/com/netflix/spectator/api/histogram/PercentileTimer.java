@@ -85,7 +85,7 @@ public final class PercentileTimer implements Timer {
         return newTimer;
       }
     }
-    return (timer instanceof PercentileTimer)
+    return timer instanceof PercentileTimer
         ? ((PercentileTimer) timer).withRange(min, max)
         : new PercentileTimer(registry, id, min, max);
   }
@@ -221,7 +221,7 @@ public final class PercentileTimer implements Timer {
 
   /** Returns a PercentileTimer limited to the specified range. */
   private PercentileTimer withRange(long min, long max) {
-    return (this.min == min && this.max == max)
+    return this.min == min && this.max == max
         ? this
         : new PercentileTimer(registry, id, min, max, counters);
   }

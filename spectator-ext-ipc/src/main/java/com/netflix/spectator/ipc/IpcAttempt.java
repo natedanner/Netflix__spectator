@@ -58,7 +58,7 @@ public enum IpcAttempt implements Tag {
     switch (attempt) {
       case 1:  t = initial;                             break;
       case 2:  t = second;                              break;
-      default: t = (attempt >= 3) ? third_up : unknown; break;
+      default: t = attempt >= 3 ? third_up : unknown; break;
     }
     return t;
   }

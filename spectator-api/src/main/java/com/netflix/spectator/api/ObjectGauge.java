@@ -50,6 +50,6 @@ class ObjectGauge<T> extends AbstractMeter<T> {
   /** Return the current value for evaluating `f` over `obj`. */
   double value() {
     final T obj = ref.get();
-    return (obj == null) ? Double.NaN : f.applyAsDouble(obj);
+    return obj == null ? Double.NaN : f.applyAsDouble(obj);
   }
 }

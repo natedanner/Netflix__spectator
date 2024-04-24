@@ -80,7 +80,7 @@ public final class PercentileBuckets {
       long delta = base / 3;
       int offset = (int) ((v - base) / delta);
       int pos = offset + POWER_OF_4_INDEX[shift / 2];
-      return (pos >= BUCKET_VALUES.length - 1) ? BUCKET_VALUES.length - 1 : pos + 1;
+      return pos >= BUCKET_VALUES.length - 1 ? BUCKET_VALUES.length - 1 : pos + 1;
     }
   }
 
@@ -128,7 +128,9 @@ public final class PercentileBuckets {
         results[pctIdx] = f * (nextB - prevB) + prevB;
         ++pctIdx;
       }
-      if (pctIdx >= pcts.length) break;
+      if (pctIdx >= pcts.length) {
+        break;
+      }
       prev = next;
       prevP = nextP;
       prevB = nextB;

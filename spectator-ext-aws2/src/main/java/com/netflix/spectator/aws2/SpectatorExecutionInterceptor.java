@@ -169,7 +169,7 @@ public class SpectatorExecutionInterceptor implements ExecutionInterceptor {
     IpcLogEntry logEntry = attrs.getAttribute(LOG_ENTRY);
     Throwable t = context.exception();
     if (t instanceof AwsServiceException) {
-      AwsServiceException exception = ((AwsServiceException) t);
+      AwsServiceException exception = (AwsServiceException) t;
       if (exception.isThrottlingException()) {
         logEntry.withStatus(IpcStatus.throttled);
       }

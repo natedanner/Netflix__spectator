@@ -65,7 +65,9 @@ public class DataPoint {
 
   @Override
   public boolean equals(Object obj) {
-    if (!(obj instanceof DataPoint)) return false;
+    if (!(obj instanceof DataPoint)) {
+      return false;
+    }
     DataPoint other = (DataPoint) obj;
     return timestamp == other.timestamp && (Math.abs(value - other.value) < 0.001);
   }

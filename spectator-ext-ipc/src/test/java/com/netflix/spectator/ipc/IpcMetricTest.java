@@ -27,7 +27,7 @@ import java.time.Duration;
 
 public class IpcMetricTest {
 
-  private Registry registry = null;
+  private Registry registry;
 
   @BeforeEach
   public void init() {

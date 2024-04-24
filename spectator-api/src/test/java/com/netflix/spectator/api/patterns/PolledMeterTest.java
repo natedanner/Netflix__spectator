@@ -88,7 +88,7 @@ public class PolledMeterTest {
 
   @Test
   public void monitorValueNullPropagate() {
-    RegistryConfig config = s -> s.equals("propagateWarnings") ? "true" : null;
+    RegistryConfig config = s -> "propagateWarnings".equals(s) ? "true" : null;
     Registry r = new DefaultRegistry(Clock.SYSTEM, config);
     Id id = r.createId("test");
 
@@ -115,7 +115,7 @@ public class PolledMeterTest {
 
   @Test
   public void monitorMonotonicCounterNullPropagate() {
-    RegistryConfig config = s -> s.equals("propagateWarnings") ? "true" : null;
+    RegistryConfig config = s -> "propagateWarnings".equals(s) ? "true" : null;
     Registry r = new DefaultRegistry(Clock.SYSTEM, config);
     Id id = r.createId("test");
 

@@ -287,14 +287,16 @@ public final class QueryIndex<T> {
           QueryIndex<T> idx = equalChecks.get(v);
           if (idx != null) {
             result |= idx.remove(queries, j, value);
-            if (idx.isEmpty())
+            if (idx.isEmpty()) {
               equalChecks.remove(v);
+            }
           }
         } else if (kq instanceof Query.Has) {
           if (hasKeyIdx != null) {
             result |= hasKeyIdx.remove(queries, j, value);
-            if (hasKeyIdx.isEmpty())
+            if (hasKeyIdx.isEmpty()) {
               hasKeyIdx = null;
+            }
           }
         } else {
           QueryIndex<T> idx = otherChecks.get(kq);
@@ -312,14 +314,16 @@ public final class QueryIndex<T> {
           // match an empty map as there could be a variety of inverted types.
           if (kq.matches(Collections.emptyMap()) && missingKeysIdx != null) {
             result |= missingKeysIdx.remove(queries, j, value);
-            if (missingKeysIdx.isEmpty())
+            if (missingKeysIdx.isEmpty()) {
               missingKeysIdx = null;
+            }
           }
         }
       } else if (otherKeysIdx != null) {
         result |= otherKeysIdx.remove(queries, i, value);
-        if (otherKeysIdx.isEmpty())
+        if (otherKeysIdx.isEmpty()) {
           otherKeysIdx = null;
+        }
       }
     } else {
       result |= matches.remove(value);

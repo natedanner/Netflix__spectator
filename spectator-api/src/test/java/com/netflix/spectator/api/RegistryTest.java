@@ -198,7 +198,7 @@ public class RegistryTest {
   public void testGaugeHelpersWithCustomFunction2() {
     AtomicLong al1 = new AtomicLong(1L);
     Registry r = new DefaultRegistry(new ManualClock(40, 0));
-    ToDoubleFunction<AtomicLong> f = (obj) -> (r.clock().wallTime() - obj.doubleValue()) / 1000.0;
+    ToDoubleFunction<AtomicLong> f = obj -> (r.clock().wallTime() - obj.doubleValue()) / 1000.0;
 
     AtomicLong v1 = r.gauge("foo", al1, f);
     Assertions.assertSame(v1, al1);
@@ -281,7 +281,7 @@ public class RegistryTest {
   public static class GaugeUsingLambda {
 
     public GaugeUsingLambda(Registry r) {
-      r.gauge("test", this, (obj) -> obj.getValue());
+      r.gauge("test", this, RegistryTest.GaugeUsingLambda::getValue);
       r.gauge("test", this, GaugeUsingLambda::getValue);
     }
 

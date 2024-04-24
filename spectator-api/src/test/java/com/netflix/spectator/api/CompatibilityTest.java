@@ -29,7 +29,7 @@ import java.util.List;
  */
 public class CompatibilityTest {
 
-  private static List<String> EXPECTED = new ArrayList<>();
+  private static final List<String> EXPECTED = new ArrayList<>();
   static {
     EXPECTED.add("Measurement(bucket-counter-age:bucket=062ms,1234567890,63.0)");
     EXPECTED.add("Measurement(bucket-counter-age:bucket=125ms,1234567890,63.0)");
@@ -212,8 +212,8 @@ public class CompatibilityTest {
 
     int length = Math.max(EXPECTED.size(), actual.size());
     for (int i = 0; i < length; ++i) {
-      String exp = (i < EXPECTED.size()) ? EXPECTED.get(i) : null;
-      String found = (i < actual.size()) ? actual.get(i) : null;
+      String exp = i < EXPECTED.size() ? EXPECTED.get(i) : null;
+      String found = i < actual.size() ? actual.get(i) : null;
       Assertions.assertEquals(exp, found);
     }
   }

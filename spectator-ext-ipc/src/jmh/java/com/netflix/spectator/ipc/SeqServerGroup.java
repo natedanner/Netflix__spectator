@@ -63,7 +63,7 @@ public class SeqServerGroup {
    * with just that subset.
    */
   private static CharSequence substr(CharSequence str, int s, int e) {
-    return (s >= e) ? null : CharBuffer.wrap(str, s, e);
+    return s >= e ? null : CharBuffer.wrap(str, s, e);
   }
 
   private final CharSequence asg;
@@ -112,13 +112,13 @@ public class SeqServerGroup {
       // Application portion is empty
       return null;
     } else {
-      return (dN > 0 && dN == asg.length()) ? asg() : substr(asg, 0, dN);
+      return dN > 0 && dN == asg.length() ? asg() : substr(asg, 0, dN);
     }
   }
 
   /** Return the server group name or null if invalid. */
   public CharSequence asg() {
-    return (d1 != 0 && dN > 0) ? asg : null;
+    return d1 != 0 && dN > 0 ? asg : null;
   }
 
   /** If the server group has a stack, then return the stack name. Otherwise return null. */
@@ -137,12 +137,16 @@ public class SeqServerGroup {
 
   /** If the server group has a detail, then return the detail name. Otherwise return null. */
   public CharSequence detail() {
-    return (d1 != 0 && d2 > 0) ? substr(asg, d2 + 1, dN) : null;
+    return d1 != 0 && d2 > 0 ? substr(asg, d2 + 1, dN) : null;
   }
 
   @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
     SeqServerGroup that = (SeqServerGroup) o;
     return d1 == that.d1
         && d2 == that.d2

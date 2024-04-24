@@ -365,8 +365,8 @@ public final class IpcLogEntry {
     this.clientAsg = asg;
     if (clientApp == null || clientCluster == null) {
       ServerGroup group = ServerGroup.parse(asg);
-      clientApp = (clientApp == null) ? group.app() : clientApp;
-      clientCluster = (clientCluster == null) ? group.cluster() : clientCluster;
+      clientApp = clientApp == null ? group.app() : clientApp;
+      clientCluster = clientCluster == null ? group.cluster() : clientCluster;
     }
     return this;
   }
@@ -439,8 +439,8 @@ public final class IpcLogEntry {
     this.serverAsg = asg;
     if (serverApp == null || serverCluster == null) {
       ServerGroup group = ServerGroup.parse(asg);
-      serverApp = (serverApp == null) ? group.app() : serverApp;
-      serverCluster = (serverCluster == null) ? group.cluster() : serverCluster;
+      serverApp = serverApp == null ? group.app() : serverApp;
+      serverCluster = serverCluster == null ? group.cluster() : serverCluster;
     }
     return this;
   }
@@ -632,7 +632,7 @@ public final class IpcLogEntry {
       result = status == null ? IpcResult.success : status.result();
     }
     if (status == null) {
-      status = (result == IpcResult.success) ? IpcStatus.success : IpcStatus.unexpected_error;
+      status = result == IpcResult.success ? IpcStatus.success : IpcStatus.unexpected_error;
     }
     if (attempt == null) {
       attempt = IpcAttempt.forAttemptNumber(1);
@@ -641,7 +641,7 @@ public final class IpcLogEntry {
       attemptFinal = IpcAttemptFinal.is_true;
     }
     if (endpoint == null) {
-      endpoint = (path == null || httpStatus == 404) ? "unknown" : PathSanitizer.sanitize(path);
+      endpoint = path == null || httpStatus == 404 ? "unknown" : PathSanitizer.sanitize(path);
     }
   }
 
@@ -826,13 +826,13 @@ public final class IpcLogEntry {
   }
 
   private String getExceptionClass() {
-    return (exception == null)
+    return exception == null
         ? null
         : exception.getClass().getName();
   }
 
   private String getExceptionMessage() {
-    return (exception == null)
+    return exception == null
         ? null
         : exception.getMessage();
   }

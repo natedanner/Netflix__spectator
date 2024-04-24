@@ -132,8 +132,9 @@ public interface PatternExpr {
 
   /** An expression that performs a logical AND of the listed sub-expressions. */
   static PatternExpr and(List<PatternExpr> exprs) {
-    if (exprs == null)
+    if (exprs == null) {
       return null;
+    }
     int size = exprs.size();
     Preconditions.checkArg(size > 0, "exprs list cannot be empty");
     return size == 1 ? exprs.get(0) : new And(exprs);
@@ -141,8 +142,9 @@ public interface PatternExpr {
 
   /** An expression that performs a logical OR of the listed sub-expressions. */
   static PatternExpr or(List<PatternExpr> exprs) {
-    if (exprs == null)
+    if (exprs == null) {
       return null;
+    }
     int size = exprs.size();
     Preconditions.checkArg(size > 0, "exprs list cannot be empty");
     return size == 1 ? exprs.get(0) : new Or(exprs);
@@ -178,8 +180,12 @@ public interface PatternExpr {
     }
 
     @Override public boolean equals(Object o) {
-      if (this == o) return true;
-      if (!(o instanceof Regex)) return false;
+      if (this == o) {
+        return true;
+      }
+      if (!(o instanceof Regex)) {
+        return false;
+      }
       Regex regex = (Regex) o;
       return matcher.equals(regex.matcher);
     }
@@ -221,8 +227,12 @@ public interface PatternExpr {
     }
 
     @Override public boolean equals(Object o) {
-      if (this == o) return true;
-      if (!(o instanceof And)) return false;
+      if (this == o) {
+        return true;
+      }
+      if (!(o instanceof And)) {
+        return false;
+      }
       And and = (And) o;
       return exprs.equals(and.exprs);
     }
@@ -264,8 +274,12 @@ public interface PatternExpr {
     }
 
     @Override public boolean equals(Object o) {
-      if (this == o) return true;
-      if (!(o instanceof Or)) return false;
+      if (this == o) {
+        return true;
+      }
+      if (!(o instanceof Or)) {
+        return false;
+      }
       Or or = (Or) o;
       return exprs.equals(or.exprs);
     }
@@ -300,8 +314,12 @@ public interface PatternExpr {
     }
 
     @Override public boolean equals(Object o) {
-      if (this == o) return true;
-      if (!(o instanceof Not)) return false;
+      if (this == o) {
+        return true;
+      }
+      if (!(o instanceof Not)) {
+        return false;
+      }
       Not not = (Not) o;
       return expr.equals(not.expr);
     }

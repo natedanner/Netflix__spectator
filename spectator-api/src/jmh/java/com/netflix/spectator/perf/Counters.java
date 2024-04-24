@@ -110,7 +110,7 @@ public class Counters {
       // Assumes about 5% of lookups will be for a new or expired counter. This is
       // mostly just to have some activity that will cause an addition to the map
       // mixed in with the reads.
-      String name = (random.nextDouble() < 0.05)
+      String name = random.nextDouble() < 0.05
           ? data.newNames[random.nextInt(data.newNames.length)]
           : data.names[random.nextInt(data.names.length)];
       return data.registry.counter(name);

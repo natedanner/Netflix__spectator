@@ -119,7 +119,7 @@ final class ZeroOrMoreMatcher implements GreedyMatcher, Serializable {
     if (after instanceof TrueMatcher) {
       return this;
     }
-    Matcher m = (next instanceof TrueMatcher) ? after : SeqMatcher.create(next, after);
+    Matcher m = next instanceof TrueMatcher ? after : SeqMatcher.create(next, after);
     return new ZeroOrMoreMatcher(repeated, m);
   }
 

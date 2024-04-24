@@ -68,7 +68,7 @@ public class MetricsController {
   private String prototypeFilterPath;
 
   private final Map<Id, String> knownMeterKinds = new HashMap<>();
-  private Predicate<Measurement> defaultMeasurementFilter = null;
+  private Predicate<Measurement> defaultMeasurementFilter;
 
   /**
    * The default measurement filter is configured through properties.

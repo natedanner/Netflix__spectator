@@ -168,7 +168,7 @@ public class ThreadPoolMonitorTest {
     ThreadPoolMonitor.attach(registry, latchedExecutor, threadPoolName);
     PolledMeter.update(registry);
     final Id id = registry.createId(meterName).withTag(ThreadPoolMonitor.ID_TAG_NAME,
-        (threadPoolName == null || threadPoolName.isEmpty()) ? ThreadPoolMonitor.DEFAULT_ID : threadPoolName);
+        threadPoolName == null || threadPoolName.isEmpty() ? ThreadPoolMonitor.DEFAULT_ID : threadPoolName);
     return registry.get(id);
   }
 

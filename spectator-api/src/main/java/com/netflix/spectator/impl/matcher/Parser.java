@@ -193,6 +193,7 @@ class Parser {
         throw unsupported("vertical whitespace class");
       case 'P':
         invert = true;
+        break;
       case 'p':
         return newNamedCharSet(name(), invert);
       default:
@@ -315,7 +316,7 @@ class Parser {
     advance(c -> c != '}');
     String[] numbers = tokens.subSequence(start, current - 1).toString().split(",");
     int min = Integer.parseInt(numbers[0]);
-    int max = (numbers.length > 1) ? Integer.parseInt(numbers[1]) : min;
+    int max = numbers.length > 1 ? Integer.parseInt(numbers[1]) : min;
     if (min < 0) {
       throw error("illegal repetition, min < 0");
     }
@@ -336,6 +337,7 @@ class Parser {
         if (matcher instanceof RepeatMatcher) {
           return matcher;
         }
+        break;
       case "??":
       case "?+":
         return new ZeroOrOneMatcher(matcher, term());
@@ -367,7 +369,9 @@ class Parser {
   }
 
   private char advance() {
-    if (!isAtEnd()) current++;
+    if (!isAtEnd()) {
+      current++;
+    }
     return previous();
   }
 

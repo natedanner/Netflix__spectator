@@ -208,7 +208,7 @@ public final class SpectatorReporter extends ScheduledReporter {
     if (prev == null) {
       AtomicLong tmp = new AtomicLong(0L);
       prev = previousValues.putIfAbsent(name, tmp);
-      prev = (prev == null) ? tmp : prev;
+      prev = prev == null ? tmp : prev;
     }
     return prev.getAndSet(newValue);
   }

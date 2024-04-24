@@ -27,7 +27,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  */
 class MetricsGaugeAggr implements io.dropwizard.metrics5.Gauge<Double> {
 
-  private ConcurrentLinkedQueue<MetricsGauge> gauges;
+  private final ConcurrentLinkedQueue<MetricsGauge> gauges;
 
   /**
    * Creates a new Aggregate Gauge.
@@ -51,8 +51,9 @@ class MetricsGaugeAggr implements io.dropwizard.metrics5.Gauge<Double> {
 
         // When it's NaN means the gauge can be unregistered due to it's reference to the value to extract value
         // was garbage collected or simple the gauge returned a NaN so i don't count it
-        if (!Double.isNaN(gaugeVal))
+        if (!Double.isNaN(gaugeVal)) {
           aggregatedValue = (Double.isNaN(aggregatedValue) ? 0 : aggregatedValue) + gaugeVal;
+        }
       }
     }
 

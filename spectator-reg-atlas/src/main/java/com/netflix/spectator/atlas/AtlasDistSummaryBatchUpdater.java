@@ -43,7 +43,7 @@ final class AtlasDistSummaryBatchUpdater
   private AtlasDistributionSummary getDistributionSummary() {
     if (distSummarySupplier != null) {
       DistributionSummary d = distSummarySupplier.get();
-      return (d instanceof AtlasDistributionSummary) ? (AtlasDistributionSummary) d : null;
+      return d instanceof AtlasDistributionSummary ? (AtlasDistributionSummary) d : null;
     }
     return null;
   }

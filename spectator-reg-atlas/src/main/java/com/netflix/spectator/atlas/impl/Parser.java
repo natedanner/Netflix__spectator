@@ -62,8 +62,11 @@ public final class Parser {
   @SuppressWarnings({"unchecked", "checkstyle:MethodLength", "PMD"})
   private static Object parse(String expr) {
     DataExpr.AggregateFunction af;
-    Query q, q1, q2;
-    String k, v;
+    Query q;
+    Query q1;
+    Query q2;
+    String k;
+    String v;
     int depth = 0;
     List<String> tmp;
     List<String> vs = null;
@@ -233,9 +236,10 @@ public final class Parser {
   }
 
   private static void pushIn(Deque<Object> stack, String k, List<String> values) {
-    if (values.size() == 1)
+    if (values.size() == 1) {
       stack.push(new Query.Equal(k, values.get(0)));
-    else
+    } else {
       stack.push(new Query.In(k, new HashSet<>(values)));
+    }
   }
 }

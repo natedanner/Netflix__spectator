@@ -58,8 +58,9 @@ public class StringReplace {
     BitSet bits = new BitSet();
     for (int i = 0; i < 128; ++i) {
       char c = (char) i;
-      if (set.contains(c))
+      if (set.contains(c)) {
         bits.set(i);
+      }
     }
     return bits;
   }

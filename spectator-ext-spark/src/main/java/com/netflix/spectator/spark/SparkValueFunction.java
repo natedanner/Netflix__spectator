@@ -66,7 +66,7 @@ public final class SparkValueFunction implements ValueFunction {
     double apply(double v) {
       // streaming/src/main/scala/org/apache/spark/streaming/StreamingSource.scala
       // -1 is used for abnormal conditions
-      return (Math.abs(v + 1.0) <= 1e-12) ? Double.NaN : v * factor;
+      return Math.abs(v + 1.0) <= 1e-12 ? Double.NaN : v * factor;
     }
   }
 

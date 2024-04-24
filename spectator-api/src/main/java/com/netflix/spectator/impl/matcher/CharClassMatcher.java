@@ -77,7 +77,7 @@ final class CharClassMatcher implements Matcher, Serializable {
   public String toString() {
     String p = set.toString();
     String n = set.invert().toString();
-    String str = (p.length() < n.length() || n.isEmpty())
+    String str = p.length() < n.length() || n.isEmpty()
         ? PatternUtils.escape(p)
         : "^" + PatternUtils.escape(n);
     return "[" + str + "]";

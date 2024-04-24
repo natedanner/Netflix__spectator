@@ -18,7 +18,7 @@ package com.netflix.spectator.impl.matcher;
 import java.lang.reflect.Method;
 
 /** Helper for accessing the major Java version. */
-class JavaVersion {
+final class JavaVersion {
 
   private JavaVersion() {
   }
